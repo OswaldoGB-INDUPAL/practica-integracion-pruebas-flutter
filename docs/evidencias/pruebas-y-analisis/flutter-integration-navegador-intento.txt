@@ -1,0 +1,9 @@
+[1/3] Web SDK                                                      13.4s
+No supported devices connected.
+
+The following devices were found, but are not supported by this project:
+Windows (desktop) • windows • windows-x64    • Microsoft Windows [Version 10.0.26300.9974]
+Chrome (web)      • chrome  • web-javascript • unknown
+Edge (web)        • edge    • web-javascript • Microsoft Edge 157.0.4341.60
+If you would like your app to run on web or windows, consider running `flutter create .` to generate projects for these platforms.
+No devices are connected. Ensure that `flutter doctor` shows at least one connected device

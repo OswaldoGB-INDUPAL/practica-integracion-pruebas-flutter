@@ -55,4 +55,13 @@
 - **Regresión:** `flutter analyze` sin observaciones y `flutter test` 15/15; pendiente de comprobar registros en compilaciones Android de depuración y distribución.
 - **Estado:** Corregida; verificación Android pendiente.
 
-**Resumen:** 1 crítica, 2 altas, 1 media y 1 baja; orígenes: UI 1, navegación 1, FCM 2, configuración 1. La apertura inicial diferida de una notificación también se ajustó en `192dca4`, pero no se contabiliza como incidencia verificada sin ejecución real.
+## INC-006 — El token puede seguir asociado a la cuenta después de cerrar sesión
+
+- **Caso:** CP-18, CP-14. **Severidad:** Alta. **Prioridad:** P1. **Origen:** FCM.
+- **Pasos:** 1. Iniciar sesión y registrar un token. 2. Cerrar sesión. 3. Revisar `users/<uid>.fcmToken` y la inscripción del dispositivo.
+- **Esperado:** la cuenta anterior deja de dirigir notificaciones a este dispositivo. **Observado por revisión:** `signOut` solo cierra Firebase Auth y `setUser(null)` no elimina el campo ni revoca el token.
+- **Causa:** falta coordinar el ciclo del token entre el cierre de sesión, Firestore y FCM; también deben contemplarse la caducidad de sesión y la falta de red.
+- **Corrección aplicada:** ninguna. Revocar sin coordinación puede eliminar el token de otro dispositivo o impedir el cierre de sesión sin conexión.
+- **Commit:** pendiente. **Prueba de regresión:** pendiente con fakes y Firebase/FCM real. **Estado:** Abierta; no utilizar datos sensibles en notificaciones hasta resolverla y verificarla.
+
+**Resumen:** 1 crítica, 3 altas, 1 media y 1 baja; orígenes: UI 1, navegación 1, FCM 3, configuración 1. La apertura inicial diferida de una notificación también se ajustó en `192dca4`, pero no se contabiliza como incidencia verificada sin ejecución real.

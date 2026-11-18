@@ -73,3 +73,5 @@ Con Flutter 3.50, `flutter analyze` terminó sin observaciones. Las pruebas de `
 | INC-005 | Registro del token solo en depuración | `2597e0f` | Análisis y suite aprobados; Android pendiente |
 
 Los enlaces directos a commits de GitHub se agregan tras publicar el repositorio. Los resultados Android, Firebase, FCM y capturas permanecen pendientes hasta ejecutarlos.
+
+**Incidencia abierta:** el token FCM puede seguir asociado a una cuenta tras cerrar sesión (INC-006). Evita enviar datos sensibles en notificaciones hasta corregir y verificar su ciclo de vida.

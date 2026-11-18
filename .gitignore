@@ -12,3 +12,6 @@ lib/firebase_options.dart
 key.properties
 .idea/
 *.iml
+node_modules/
+firestore-debug.log
+firebase-debug.log

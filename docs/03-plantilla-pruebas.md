@@ -14,7 +14,7 @@ Las pruebas simuladas comprueban UI y lógica, no sustituyen Firebase ni Android
 | CP-08 | Datos | FC-02 | Positivo | Orden de lista | dos tareas con fechas distintas | Más reciente primero | PENDIENTE — ejecutar en dispositivo/emulador. | Pendiente | Pendiente manual | evidencias/capturas-aplicacion/CP-08-lista.png |
 | CP-09 | Datos | FC-03 | Positivo | Actualizar en Firebase | Café → Comprar café | Documento y pantalla actualizados | PENDIENTE — ejecutar en dispositivo/emulador. | Pendiente | Pendiente manual | evidencias/firebase/CP-09-documento-modificado.png |
 | CP-10 | Datos | FC-03 | Positivo | Eliminar en Firebase | tarea Comprar café | Desaparece tras confirmar | PENDIENTE — ejecutar en dispositivo/emulador. | Pendiente | Pendiente manual | evidencias/firebase/CP-10-documento-eliminado.png |
-| CP-11 | Seguridad | FC-03 | Negativo | Rechazar datos ajenos | usuario A solicita tarea de B | Permiso denegado | PENDIENTE — ejecutar en dispositivo/emulador. | Pendiente | Pendiente manual | evidencias/firebase/CP-11-regla-rechazo.png |
+| CP-11 | Seguridad | FC-03 | Negativo | Rechazar datos ajenos | usuario B solicita tarea de A | Permiso denegado | El emulador rechazó lectura, escritura y eliminación ajenas. | Aprobado | Pendiente manual | ../rules_tests/rules.test.mjs; evidencias/pruebas-y-analisis/firestore-rules-test.txt |
 | CP-12 | Estados | FC-02 | Negativo | Vacío y error simulado | lista vacía; error de lectura | Estado vacío y mensaje de error | Estado vacío y mensaje de error con fake o prueba unitaria. | Aprobado | Pendiente manual | ../test/widget/task_page_test.dart |
 | CP-13 | Storage | FC-02 | Positivo | Subir archivo | archivo de ejemplo | Archivo visible | No aplica: la app no usa Storage. | No ejecutado | No aplica | No aplica |
 | CP-14 | FCM | FC-04 | Positivo | Token generado y guardado | dispositivo Android autorizado | Token guardado para usuario | PENDIENTE — ejecutar en dispositivo/emulador. | Pendiente | Pendiente manual | evidencias/notificaciones-fcm/CP-14-token-oculto.png |
@@ -37,11 +37,14 @@ Las pruebas simuladas comprueban UI y lógica, no sustituyen Firebase ni Android
 | CP-31 | FCM | FC-04 | Positivo | Abrir detalle simulado | route=/detalle, id=t1; usuario u1 | Se muestra Comprar café | El detalle se mostró con repositorio fake. | Aprobado | Pendiente manual | ../test/widget/notification_navigation_test.dart |
 | CP-32 | FCM | FC-04 | Negativo | Rechazar ruta no permitida | route=/administracion, id=t1 | No se consulta la tarea | No se consultó el repositorio fake. | Aprobado | Pendiente manual | ../test/widget/notification_navigation_test.dart |
 | CP-33 | FCM | FC-04 | Negativo | Cambiar sesión durante lectura | usuario u1 → sin sesión, id=t1 | No se abre el detalle | El detalle no se abrió con el repositorio fake. | Aprobado | Pendiente manual | ../test/widget/notification_navigation_test.dart |
+| CP-34 | Seguridad | FC-02 | Positivo | Operaciones propias | usuario A, tarea A | Crear, leer, actualizar y eliminar autorizados | Las cuatro operaciones fueron autorizadas en el emulador. | Aprobado | Pendiente manual | ../rules_tests/rules.test.mjs |
+| CP-35 | Seguridad | FC-02 | Negativo | Acceso sin sesión | sin usuario, tarea y token de A | Permiso denegado | El emulador rechazó lectura y escritura. | Aprobado | Pendiente manual | ../rules_tests/rules.test.mjs |
+| CP-36 | Seguridad | FC-04 | Negativo | Proteger token de otra cuenta | usuario B intenta leer o cambiar token de A | Permiso denegado | El emulador rechazó lectura y cambio; permitió acceso propio. | Aprobado | Pendiente manual | ../rules_tests/rules.test.mjs |
 
 ## Análisis de resultados
 
-Total: 33; aplicables: 32; ejecutados: 17; aprobados: 17; fallidos: 0; no ejecutados: 1; pendientes: 15.
+Total: 36; aplicables: 35; ejecutados: 21; aprobados: 21; fallidos: 0; no ejecutados: 1; pendientes: 14.
 
 Aprobación de flujos críticos = casos aprobados de flujos críticos / casos aplicables de flujos críticos × 100. **PENDIENTE:** completar ejecución real y reinicio antes de calcular el porcentaje final.
 
-Análisis inicial: 1 error, 0 advertencias y 5 observaciones informativas. Análisis final: 0 errores, 0 advertencias y 0 observaciones; `flutter analyze` terminó con código 0 tras adoptar `material_ui`. `flutter test`: 18 pruebas aprobadas de 18. Los fallos detectados se concentraron en navegación, inicialización y sintaxis. Las comprobaciones de servicios reales aún no se han ejecutado.
+Análisis inicial: 1 error, 0 advertencias y 5 observaciones informativas. Análisis final: 0 errores, 0 advertencias y 0 observaciones; `flutter analyze` terminó con código 0 tras adoptar `material_ui`. `flutter test`: 18 pruebas aprobadas de 18. Reglas de Firestore en emulador: 4 pruebas aprobadas de 4; las denegaciones registradas corresponden a los casos negativos esperados. Los fallos detectados se concentraron en navegación, inicialización y sintaxis. Las comprobaciones de servicios reales aún no se han ejecutado.

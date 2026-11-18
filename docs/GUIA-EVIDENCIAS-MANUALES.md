@@ -16,3 +16,5 @@
 Las rutas de captura anteriores son relativas a `docs/evidencias/`. No marques como aprobado un caso que no ejecutaste.
 
 El intento de integración en Windows quedó registrado en `pruebas-y-analisis/flutter-integration-windows.txt`: se necesita activar el modo de desarrollador para permitir enlaces simbólicos. El mismo recorrido sí pasó como prueba de widget con fakes; aún falta ejecutarlo en dispositivo.
+
+En un segundo intento se construyó correctamente la copia Windows usando enlaces de directorio en el espacio temporal, pero una política de control de aplicaciones bloqueó el ejecutable. El resultado completo está en `pruebas-y-analisis/flutter-integration-windows-segundo-intento.txt`; no constituye una prueba de integración aprobada.

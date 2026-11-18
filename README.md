@@ -70,5 +70,6 @@ Con Flutter 3.50, `flutter analyze` terminó sin observaciones. Las pruebas de `
 | INC-002 | El fallo de FCM no bloquea el arranque | `b4ac250` | Pendiente |
 | INC-003 | Paréntesis faltante en pantalla de acceso | `d4cc7be` | Compilación de pruebas y suite aprobadas |
 | INC-004 | Migración a la API Material vigente | `3a9b7cb` | Análisis sin observaciones y suite aprobada |
+| INC-005 | Registro del token solo en depuración | `2597e0f` | Análisis y suite aprobados; Android pendiente |
 
 Los enlaces directos a commits de GitHub se agregan tras publicar el repositorio. Los resultados Android, Firebase, FCM y capturas permanecen pendientes hasta ejecutarlos.

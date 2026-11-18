@@ -45,4 +45,14 @@
 - **Regresión:** `flutter analyze` terminó con «No issues found» y código 0; `flutter test` pasó 15/15. Salidas en `evidencias/pruebas-y-analisis/`.
 - **Estado:** Verificada con análisis y pruebas automatizadas; compilación Android pendiente.
 
-**Resumen:** 1 crítica, 2 altas y 1 baja; orígenes: UI 1, navegación 1, FCM 1, configuración 1. La apertura inicial diferida de una notificación también se ajustó en `192dca4`, pero no se contabiliza como incidencia verificada sin ejecución real.
+## INC-005 — El token FCM se imprimía también en compilaciones de distribución
+
+- **Caso:** CP-14. **Severidad:** Media. **Prioridad:** P2. **Origen:** FCM.
+- **Pasos:** 1. Iniciar sesión con un token FCM. 2. Revisar la salida de `saveToken` en una compilación de distribución.
+- **Esperado:** el token solo aparece en el registro de depuración para recoger la evidencia. **Observado por revisión:** la llamada a `debugPrint` era incondicional.
+- **Causa:** el mensaje no comprobaba el modo de compilación.
+- **Corrección:** `lib/data/notification_service.dart` registra el token solamente si `kDebugMode` es verdadero; commit `2597e0f` (`fix: INC-005 limitar registro de token a depuración`).
+- **Regresión:** `flutter analyze` sin observaciones y `flutter test` 15/15; pendiente de comprobar registros en compilaciones Android de depuración y distribución.
+- **Estado:** Corregida; verificación Android pendiente.
+
+**Resumen:** 1 crítica, 2 altas, 1 media y 1 baja; orígenes: UI 1, navegación 1, FCM 2, configuración 1. La apertura inicial diferida de una notificación también se ajustó en `192dca4`, pero no se contabiliza como incidencia verificada sin ejecución real.

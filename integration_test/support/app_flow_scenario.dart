@@ -30,7 +30,15 @@ class FakeTasks implements TaskRepository {
 
   @override
   Future<void> save(Task task) async {
-    items.add(task);
+    items.add(
+      Task(
+        id: task.id.isEmpty ? 'fake-task-1' : task.id,
+        title: task.title,
+        description: task.description,
+        done: task.done,
+        createdAt: task.createdAt,
+      ),
+    );
     controller.add(List.of(items));
   }
 
@@ -73,6 +81,15 @@ void registerAppFlowTest() {
       await tester.tap(find.text('Guardar'));
       await tester.pumpAndSettle();
       expect(find.text('Comprar café'), findsOneWidget);
+      await tester.tap(find.widgetWithText(ListTile, 'Comprar café'));
+      await tester.pumpAndSettle();
+      final detail = tester.widget<TaskDetailPage>(find.byType(TaskDetailPage));
+      expect(detail.task.id, 'fake-task-1');
+      expect(detail.task.description, 'Dos libras');
+      expect(find.text('Dos libras'), findsOneWidget);
+      await tester.pageBack();
+      await tester.pumpAndSettle();
+      expect(find.widgetWithText(ListTile, 'Comprar café'), findsOneWidget);
       await tester.tap(find.byTooltip('Cerrar sesión'));
       await tester.pumpAndSettle();
       expect(find.text('Iniciar sesión'), findsOneWidget);

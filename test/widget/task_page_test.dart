@@ -46,6 +46,46 @@ void main() {
     expect(find.text('No hay tareas.'), findsOneWidget);
     await repo.controller.close();
   });
+  testWidgets('muestra tres tareas en el orden recibido', (tester) async {
+    final repo = FakeTasks();
+    final tasks = [
+      Task(
+        id: '3',
+        title: 'Reciente',
+        description: '',
+        done: false,
+        createdAt: DateTime.utc(2026, 3),
+      ),
+      Task(
+        id: '2',
+        title: 'Intermedia',
+        description: '',
+        done: false,
+        createdAt: DateTime.utc(2026, 2),
+      ),
+      Task(
+        id: '1',
+        title: 'Antigua',
+        description: '',
+        done: false,
+        createdAt: DateTime.utc(2026, 1),
+      ),
+    ];
+    await tester.pumpWidget(
+      MaterialApp(
+        home: TaskListPage(auth: FakeAuth(), repository: repo),
+      ),
+    );
+    repo.controller.add(tasks);
+    await tester.pump();
+    final titles = tester
+        .widgetList<ListTile>(find.byType(ListTile))
+        .map((tile) => (tile.title! as Text).data)
+        .toList();
+    expect(titles, ['Reciente', 'Intermedia', 'Antigua']);
+    await tester.pumpWidget(const SizedBox());
+    await repo.controller.close();
+  });
   testWidgets('impide guardar formulario vacío', (tester) async {
     final repo = FakeTasks();
     await tester.pumpWidget(MaterialApp(home: TaskFormPage(repository: repo)));

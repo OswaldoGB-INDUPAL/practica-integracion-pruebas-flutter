@@ -1,0 +1,32 @@
+00:00 +0: loading C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/full_flow_test.dart
+00:00 +0: iniciar sesión, crear tarea y cerrar sesión con repositorios fake
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: 'fake-task-1'
+  Actual: ''
+   Which: is different. Both strings start the same, but the actual value is missing the following
+trailing characters: fake-task- ...
+
+When the exception was thrown, this was the stack:
+#4      registerAppFlowTest.<anonymous closure> (file:///C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/integration_test/support/app_flow_scenario.dart:79:7)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1968:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/integration_test/support/app_flow_scenario.dart line 79
+The test description was:
+  iniciar sesión, crear tarea y cerrar sesión con repositorios fake
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +0 -1: iniciar sesión, crear tarea y cerrar sesión con repositorios fake [E]
+  Test failed. See exception logs above.
+  The test description was: iniciar sesión, crear tarea y cerrar sesión con repositorios fake
+  
+00:01 +0 -1: Some tests failed.
+
+Failing tests:
+  C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/full_flow_test.dart: iniciar sesión, crear tarea y cerrar sesión con repositorios fake

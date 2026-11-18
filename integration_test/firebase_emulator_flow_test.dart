@@ -6,6 +6,7 @@ import 'package:integration_test/integration_test.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:practica_integracion_pruebas_flutter/data/repositories.dart';
 import 'package:practica_integracion_pruebas_flutter/main.dart';
+import 'package:practica_integracion_pruebas_flutter/models/task.dart';
 
 Future<void> waitFor(
   WidgetTester tester,
@@ -86,6 +87,40 @@ void main() {
           .get();
       expect(stored.docs, hasLength(1));
       expect(stored.docs.single.data()['title'], 'Comprar café');
+      final repository = FirebaseTaskRepository(uid);
+      await repository.save(
+        Task(
+          id: '',
+          title: 'Tarea reciente',
+          description: '',
+          done: false,
+          createdAt: DateTime.utc(2099),
+        ),
+      );
+      await repository.save(
+        Task(
+          id: '',
+          title: 'Tarea antigua',
+          description: '',
+          done: false,
+          createdAt: DateTime.utc(2000),
+        ),
+      );
+      await waitFor(tester, find.widgetWithText(ListTile, 'Tarea antigua'));
+      final titles = tester
+          .widgetList<ListTile>(find.byType(ListTile))
+          .map((tile) => (tile.title! as Text).data)
+          .toList();
+      expect(titles, ['Tarea reciente', 'Comprar café', 'Tarea antigua']);
+      final ordered = await repository.watchTasks().firstWhere(
+        (items) => items.length == 3,
+      );
+      for (final task in ordered.where(
+        (task) => task.title != 'Comprar café',
+      )) {
+        await repository.delete(task.id);
+      }
+      await tester.pump(const Duration(milliseconds: 500));
       await tester.tap(find.widgetWithText(ListTile, 'Comprar café'));
       await waitFor(tester, find.text('Editar'));
       await tester.tap(find.text('Editar'));

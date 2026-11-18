@@ -46,11 +46,14 @@ Las pruebas simuladas comprueban UI y lógica, no sustituyen Firebase ni Android
 | CP-40 | Sesión | FC-05 | Positivo | Inicio sin sesión | usuario inicial nulo | No se limpia un token inexistente | No se invocó la limpieza simulada. | Aprobado | Pendiente manual | ../test/unit/notification_session_test.dart |
 | CP-41 | Sesión | FC-05 | Positivo | Esperar limpieza anterior | salida A, entrada B | El registro de B espera | La operación esperó al fake de limpieza. | Aprobado | Pendiente manual | ../test/unit/notification_session_test.dart |
 | CP-42 | Sesión | FC-05 | Negativo | Cambio directo de usuario | A → B | Se intenta limpiar A | Se invocó la limpieza antes de registrar B. | Aprobado | Pendiente manual | ../test/unit/notification_session_test.dart |
+| CP-43 | FCM | FC-05 | Positivo | Retirar token propio | token guardado coincide con token actual | Se elimina el campo y se conservan los demás | El campo se eliminó en Firestore simulado. | Aprobado | Pendiente manual | ../test/unit/token_cleanup_test.dart |
+| CP-44 | FCM | FC-05 | Negativo | Conservar token de otro dispositivo | token guardado distinto del actual | El token ajeno permanece | El campo permaneció en Firestore simulado. | Aprobado | Pendiente manual | ../test/unit/token_cleanup_test.dart |
+| CP-45 | FCM | FC-05 | Negativo | Usuario sin documento | usuario sin documento, token actual | No se crea documento | El documento siguió ausente en Firestore simulado. | Aprobado | Pendiente manual | ../test/unit/token_cleanup_test.dart |
 
 ## Análisis de resultados
 
-Total: 42; aplicables: 41; ejecutados: 27; aprobados: 27; fallidos: 0; no ejecutados: 1; pendientes: 14.
+Total: 45; aplicables: 44; ejecutados: 30; aprobados: 30; fallidos: 0; no ejecutados: 1; pendientes: 14.
 
 Aprobación de flujos críticos = casos aprobados de flujos críticos / casos aplicables de flujos críticos × 100. **PENDIENTE:** completar ejecución real y reinicio antes de calcular el porcentaje final.
 
-Análisis inicial: 1 error, 0 advertencias y 5 observaciones informativas. Análisis final: 0 errores, 0 advertencias y 0 observaciones; `flutter analyze` terminó con código 0 tras adoptar `material_ui`. `flutter test`: 24 pruebas aprobadas de 24. Reglas de Firestore en emulador: 4 pruebas aprobadas de 4; las denegaciones registradas corresponden a los casos negativos esperados. Los fallos detectados se concentraron en navegación, inicialización y sintaxis. Las comprobaciones de servicios reales aún no se han ejecutado.
+Análisis inicial: 1 error, 0 advertencias y 5 observaciones informativas. Análisis final: 0 errores, 0 advertencias y 0 observaciones; `flutter analyze` terminó con código 0 tras adoptar `material_ui`. `flutter test`: 27 pruebas aprobadas de 27. Reglas de Firestore en emulador: 4 pruebas aprobadas de 4; las denegaciones registradas corresponden a los casos negativos esperados. Los fallos detectados se concentraron en navegación, inicialización y sintaxis. Las comprobaciones de servicios reales aún no se han ejecutado.

@@ -19,3 +19,5 @@ El segundo intento quedó registrado completo en `flutter-integration-windows-se
 Las salidas `flutter-test-inicial-INC-006.txt` y `flutter-test-regresion-INC-006.txt` documentan la prueba de orden y tolerancia a fallos del cierre, no una validación real de FCM.
 
 Las salidas `flutter-test-caducidad-inicial.txt` y `flutter-test-caducidad-regresion.txt` muestran la regresión de coordinación simulada al cambiar la sesión; no comprueban FCM real.
+
+`flutter-test-token-firestore-fake.txt` muestra tres pruebas de borrado selectivo con Firestore simulado; no prueba FCM ni condiciones reales de red.

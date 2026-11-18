@@ -28,11 +28,24 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 class _MyAppState extends State<MyApp> {
-  late final Stream<String?> session = widget.auth.authState().map((uid) { widget.notifications?.setUser(uid); return uid; });
+  final fallbackNavigatorKey = GlobalKey<NavigatorState>();
+  String? previousUid;
+  bool seenSession = false;
+  late final Stream<String?> session = widget.auth.authState().map((uid) {
+    if (seenSession && uid != previousUid) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) (widget.navigatorKey ?? fallbackNavigatorKey).currentState?.popUntil((route) => route.isFirst);
+      });
+    }
+    seenSession = true;
+    previousUid = uid;
+    widget.notifications?.setUser(uid);
+    return uid;
+  });
   @override void dispose() { widget.notifications?.dispose(); super.dispose(); }
   @override
   Widget build(BuildContext context) => MaterialApp(
-    navigatorKey: widget.navigatorKey, scaffoldMessengerKey: widget.messengerKey,
+    navigatorKey: widget.navigatorKey ?? fallbackNavigatorKey, scaffoldMessengerKey: widget.messengerKey,
     title: 'Mis tareas', theme: ThemeData(colorSchemeSeed: Colors.teal, useMaterial3: true),
     home: StreamBuilder<String?>(stream: session, builder: (context, snapshot) {
       if (snapshot.connectionState == ConnectionState.waiting) return const Scaffold(body: Center(child: CircularProgressIndicator()));

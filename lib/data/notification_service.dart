@@ -37,7 +37,14 @@ class NotificationService {
       final token = await FirebaseMessaging.instance.getToken();
       if (token != null && uid == value) await saveToken(value, token);
     } catch (_) { debugPrint('No se pudo obtener el token de notificaciones.'); }
-    if (pending != null) { final message = pending!; pending = null; await open(message); }
+    if (pending != null && uid == value) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (uid != value || pending == null) return;
+        final message = pending!;
+        pending = null;
+        open(message);
+      });
+    }
   }
   Future<void> saveToken(String userId, String token) async {
     try {

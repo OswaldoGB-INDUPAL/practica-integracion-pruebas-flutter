@@ -22,21 +22,34 @@ class NotificationService {
 
   Future<void> start() async {
     await FirebaseMessaging.instance.requestPermission();
-    subscriptions.add(FirebaseMessaging.onMessage.listen((message) {
-      scaffoldKey.currentState?.showSnackBar(SnackBar(content: Text(message.notification?.title ?? 'Nueva notificación')));
-    }));
+    subscriptions.add(
+      FirebaseMessaging.onMessage.listen((message) {
+        scaffoldKey.currentState?.showSnackBar(
+          SnackBar(
+            content: Text(message.notification?.title ?? 'Nueva notificación'),
+          ),
+        );
+      }),
+    );
     subscriptions.add(FirebaseMessaging.onMessageOpenedApp.listen(open));
-    subscriptions.add(FirebaseMessaging.instance.onTokenRefresh.listen((token) { if (uid != null) saveToken(uid!, token); }));
+    subscriptions.add(
+      FirebaseMessaging.instance.onTokenRefresh.listen((token) {
+        if (uid != null) saveToken(uid!, token);
+      }),
+    );
     final initial = await FirebaseMessaging.instance.getInitialMessage();
     if (initial != null) open(initial);
   }
+
   Future<void> setUser(String? value) async {
     uid = value;
     if (value == null) return;
     try {
       final token = await FirebaseMessaging.instance.getToken();
       if (token != null && uid == value) await saveToken(value, token);
-    } catch (_) { debugPrint('No se pudo obtener el token de notificaciones.'); }
+    } catch (_) {
+      debugPrint('No se pudo obtener el token de notificaciones.');
+    }
     if (pending != null && uid == value) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (uid != value || pending == null) return;
@@ -46,23 +59,47 @@ class NotificationService {
       });
     }
   }
+
   Future<void> saveToken(String userId, String token) async {
     try {
-      await FirebaseFirestore.instance.collection('users').doc(userId).set({'fcmToken': token}, SetOptions(merge: true));
+      await FirebaseFirestore.instance.collection('users').doc(userId).set({
+        'fcmToken': token,
+      }, SetOptions(merge: true));
       debugPrint('Token FCM: $token');
-    } catch (_) { debugPrint('No se pudo guardar el token de notificaciones.'); }
+    } catch (_) {
+      debugPrint('No se pudo guardar el token de notificaciones.');
+    }
   }
+
   Future<void> open(RemoteMessage message) async {
-    if (message.data['route'] != '/detalle' || message.data['id'] is! String) return;
+    if (message.data['route'] != '/detalle' || message.data['id'] is! String)
+      return;
     final user = uid;
-    if (user == null || navigatorKey.currentState == null) { pending = message; return; }
+    if (user == null || navigatorKey.currentState == null) {
+      pending = message;
+      return;
+    }
     try {
       final repo = tasks(user);
       final list = await repo.watchTasks().first;
       final matches = list.where((task) => task.id == message.data['id']);
       if (matches.isEmpty || uid != user) return;
-      navigatorKey.currentState?.push(MaterialPageRoute(builder: (_) => TaskDetailPage(repository: repo, task: matches.first)));
-    } catch (_) { scaffoldKey.currentState?.showSnackBar(const SnackBar(content: Text('No se pudo abrir la tarea de la notificación.'))); }
+      navigatorKey.currentState?.pushNamed(
+        '/detalle',
+        arguments: TaskRouteArguments(repo, matches.first),
+      );
+    } catch (_) {
+      scaffoldKey.currentState?.showSnackBar(
+        const SnackBar(
+          content: Text('No se pudo abrir la tarea de la notificación.'),
+        ),
+      );
+    }
   }
-  void dispose() { for (final subscription in subscriptions) { subscription.cancel(); } }
+
+  void dispose() {
+    for (final subscription in subscriptions) {
+      subscription.cancel();
+    }
+  }
 }

@@ -40,11 +40,13 @@ Las pruebas simuladas comprueban UI y lógica, no sustituyen Firebase ni Android
 | CP-34 | Seguridad | FC-02 | Positivo | Operaciones propias | usuario A, tarea A | Crear, leer, actualizar y eliminar autorizados | Las cuatro operaciones fueron autorizadas en el emulador. | Aprobado | Pendiente manual | ../rules_tests/rules.test.mjs |
 | CP-35 | Seguridad | FC-02 | Negativo | Acceso sin sesión | sin usuario, tarea y token de A | Permiso denegado | El emulador rechazó lectura y escritura. | Aprobado | Pendiente manual | ../rules_tests/rules.test.mjs |
 | CP-36 | Seguridad | FC-04 | Negativo | Proteger token de otra cuenta | usuario B intenta leer o cambiar token de A | Permiso denegado | El emulador rechazó lectura y cambio; permitió acceso propio. | Aprobado | Pendiente manual | ../rules_tests/rules.test.mjs |
+| CP-37 | Sesión | FC-05 | Positivo | Limpiar token antes del cierre | limpieza simulada exitosa | Limpieza antes de cerrar Auth | Orden de llamadas comprobado con fake. | Aprobado | Pendiente manual | ../test/unit/sign_out_test.dart |
+| CP-38 | Sesión | FC-05 | Negativo | Cierre sin conexión | limpieza simulada con excepción | Auth cierra igualmente | Cierre ejecutado después del error simulado. | Aprobado | Pendiente manual | ../test/unit/sign_out_test.dart |
 
 ## Análisis de resultados
 
-Total: 36; aplicables: 35; ejecutados: 21; aprobados: 21; fallidos: 0; no ejecutados: 1; pendientes: 14.
+Total: 38; aplicables: 37; ejecutados: 23; aprobados: 23; fallidos: 0; no ejecutados: 1; pendientes: 14.
 
 Aprobación de flujos críticos = casos aprobados de flujos críticos / casos aplicables de flujos críticos × 100. **PENDIENTE:** completar ejecución real y reinicio antes de calcular el porcentaje final.
 
-Análisis inicial: 1 error, 0 advertencias y 5 observaciones informativas. Análisis final: 0 errores, 0 advertencias y 0 observaciones; `flutter analyze` terminó con código 0 tras adoptar `material_ui`. `flutter test`: 18 pruebas aprobadas de 18. Reglas de Firestore en emulador: 4 pruebas aprobadas de 4; las denegaciones registradas corresponden a los casos negativos esperados. Los fallos detectados se concentraron en navegación, inicialización y sintaxis. Las comprobaciones de servicios reales aún no se han ejecutado.
+Análisis inicial: 1 error, 0 advertencias y 5 observaciones informativas. Análisis final: 0 errores, 0 advertencias y 0 observaciones; `flutter analyze` terminó con código 0 tras adoptar `material_ui`. `flutter test`: 20 pruebas aprobadas de 20. Reglas de Firestore en emulador: 4 pruebas aprobadas de 4; las denegaciones registradas corresponden a los casos negativos esperados. Los fallos detectados se concentraron en navegación, inicialización y sintaxis. Las comprobaciones de servicios reales aún no se han ejecutado.

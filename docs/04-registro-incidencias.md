@@ -61,7 +61,8 @@
 - **Pasos:** 1. Iniciar sesión y registrar un token. 2. Cerrar sesión. 3. Revisar `users/<uid>.fcmToken` y la inscripción del dispositivo.
 - **Esperado:** la cuenta anterior deja de dirigir notificaciones a este dispositivo. **Observado por revisión:** `signOut` solo cierra Firebase Auth y `setUser(null)` no elimina el campo ni revoca el token.
 - **Causa:** falta coordinar el ciclo del token entre el cierre de sesión, Firestore y FCM; también deben contemplarse la caducidad de sesión y la falta de red.
-- **Corrección aplicada:** ninguna. Revocar sin coordinación puede eliminar el token de otro dispositivo o impedir el cierre de sesión sin conexión.
-- **Commit:** pendiente. **Prueba de regresión:** pendiente con fakes y Firebase/FCM real. **Estado:** Abierta; no utilizar datos sensibles en notificaciones hasta resolverla y verificarla.
+- **Corrección aplicada:** en el cierre explícito, el servicio deja de aceptar escrituras nuevas, intenta esperar las pendientes y elimina el campo mediante una transacción solo si coincide con el token de este dispositivo; también intenta desactivar el registro automático y revocar el token. Los intentos tienen tiempo limitado y el cierre continúa si fallan.
+- **Commit:** `ef5ae7d` (`fix: INC-006 intentar desvincular token al cerrar sesión`). **Prueba de regresión:** `test/unit/sign_out_test.dart` verifica el orden y el cierre cuando la limpieza falla; salidas inicial y final en `evidencias/pruebas-y-analisis/`. No comprueba la transacción ni FCM reales.
+- **Estado:** Parcialmente corregida, abierta hasta verificar con Firebase y dispositivo. La caducidad automática no ejecuta esta limpieza previa; sin red o ante operaciones tardías el token puede continuar asociado. No enviar datos sensibles mientras persista el riesgo.
 
 **Resumen:** 1 crítica, 3 altas, 1 media y 1 baja; orígenes: UI 1, navegación 1, FCM 3, configuración 1. La apertura inicial diferida de una notificación también se ajustó en `192dca4`, pero no se contabiliza como incidencia verificada sin ejecución real.

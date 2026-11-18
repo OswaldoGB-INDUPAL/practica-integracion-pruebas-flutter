@@ -2,7 +2,7 @@
 
 Aplicación de tareas por usuario con autenticación, Firestore y notificaciones. Práctica Semana 16 — Integración y pruebas, Electiva 1, UTEC. El proyecto se creó desde cero porque el directorio de trabajo no contenía un proyecto Flutter.
 
-Autor: Oswaldo Guevara — [Carnet]. [Compañero/a, si aplica]. Repositorio público: [https://github.com/OswaldoGB-INDUPAL/practica-integracion-pruebas-flutter](https://github.com/OswaldoGB-INDUPAL/practica-integracion-pruebas-flutter).
+Autor: Oswaldo Guevara — [Carnet]. Repositorio público: [https://github.com/OswaldoGB-INDUPAL/practica-integracion-pruebas-flutter](https://github.com/OswaldoGB-INDUPAL/practica-integracion-pruebas-flutter).
 
 ## Arquitectura
 

@@ -41,4 +41,4 @@ Total: 30; aplicables: 29; ejecutados: 14; aprobados: 14; fallidos: 0; no ejecut
 
 Aprobación de flujos críticos = casos aprobados de flujos críticos / casos aplicables de flujos críticos × 100. **PENDIENTE:** completar ejecución real y reinicio antes de calcular el porcentaje final.
 
-Análisis inicial: 1 error, 0 advertencias y 5 observaciones informativas. Análisis final: 0 errores, 0 advertencias y 6 observaciones informativas por la obsolescencia de `material.dart` en Flutter 3.50; `flutter analyze` devolvió código 1 por esas observaciones. `flutter test`: 15 pruebas aprobadas de 15. Los fallos detectados se concentraron en navegación, inicialización y sintaxis. Las comprobaciones de servicios reales aún no se han ejecutado.
+Análisis inicial: 1 error, 0 advertencias y 5 observaciones informativas. Análisis final: 0 errores, 0 advertencias y 0 observaciones; `flutter analyze` terminó con código 0 tras adoptar `material_ui`. `flutter test`: 15 pruebas aprobadas de 15. Los fallos detectados se concentraron en navegación, inicialización y sintaxis. Las comprobaciones de servicios reales aún no se han ejecutado.

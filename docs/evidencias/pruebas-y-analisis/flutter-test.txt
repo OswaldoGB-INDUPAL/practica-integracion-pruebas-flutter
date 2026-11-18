@@ -1,17 +1,17 @@
 00:00 +0: loading C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/task_model_test.dart
-00:00 +0: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/task_model_test.dart: conserva los campos al convertir a mapa y volver
+00:00 +0: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/validators_test.dart: valida límites y espacios del título
 00:00 +1: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/task_model_test.dart: conserva los campos al convertir a mapa y volver
 00:00 +2: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/validators_test.dart: limita la descripción a 500 caracteres
 00:00 +3: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/task_model_test.dart: proporciona valores seguros para campos ausentes
-00:00 +4: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/flows_test.dart: CP-03: muestra error de credenciales rechazadas
-00:00 +5: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/flows_test.dart: CP-03: muestra error de credenciales rechazadas
-00:01 +6: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/flows_test.dart: CP-03: muestra error de credenciales rechazadas
-00:01 +7: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/full_flow_test.dart: iniciar sesión, crear tarea y cerrar sesión con repositorios fake
-00:02 +8: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/full_flow_test.dart: iniciar sesión, crear tarea y cerrar sesión con repositorios fake
-00:02 +9: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/full_flow_test.dart: iniciar sesión, crear tarea y cerrar sesión con repositorios fake
-00:02 +10: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/full_flow_test.dart: iniciar sesión, crear tarea y cerrar sesión con repositorios fake
-00:02 +11: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/flows_test.dart: CP-09: editar guarda valores cambiados
-00:02 +12: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/flows_test.dart: CP-10: eliminar requiere confirmación
-00:02 +13: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/flows_test.dart: CP-12: error de lectura muestra mensaje
-00:02 +14: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/flows_test.dart: INC-001: caducidad de sesión cierra detalles privados
-00:02 +15: All tests passed!
+00:06 +4: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/flows_test.dart: CP-03: muestra error de credenciales rechazadas
+00:07 +5: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/flows_test.dart: CP-03: muestra error de credenciales rechazadas
+00:08 +6: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/flows_test.dart: CP-03: muestra error de credenciales rechazadas
+00:08 +7: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/full_flow_test.dart: iniciar sesión, crear tarea y cerrar sesión con repositorios fake
+00:08 +8: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/full_flow_test.dart: iniciar sesión, crear tarea y cerrar sesión con repositorios fake
+00:08 +9: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/full_flow_test.dart: iniciar sesión, crear tarea y cerrar sesión con repositorios fake
+00:09 +10: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/unchanged_test.dart: al guardar sin cambios vuelve y no escribe
+00:09 +11: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/flows_test.dart: CP-09: editar guarda valores cambiados
+00:10 +12: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/flows_test.dart: CP-10: eliminar requiere confirmación
+00:10 +13: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/flows_test.dart: CP-12: error de lectura muestra mensaje
+00:10 +14: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/flows_test.dart: INC-001: caducidad de sesión cierra detalles privados
+00:10 +15: All tests passed!

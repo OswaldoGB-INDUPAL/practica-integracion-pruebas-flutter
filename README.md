@@ -42,7 +42,7 @@ flutter test
 flutter test integration_test/app_flow_test.dart -d <id-dispositivo>
 ```
 
-Con Flutter 3.50 el análisis devuelve código 1 por seis observaciones informativas de obsolescencia de `material.dart`, sin errores ni advertencias; `flutter analyze --no-fatal-infos` permite comprobar el resto sin ocultarlas. Las pruebas de `test/` usan fakes y no validan Firebase real. El flujo de integración necesita un dispositivo compatible. Los resultados y limitaciones reales están en [la plantilla](docs/03-plantilla-pruebas.md); las capturas previstas están en [capturas](docs/evidencias/capturas-aplicacion/README.md) y [Firebase](docs/evidencias/firebase/README.md). Aún no hay capturas reales.
+Con Flutter 3.50, `flutter analyze` terminó sin observaciones. Las pruebas de `test/` usan fakes y no validan Firebase real. El flujo de integración necesita un dispositivo compatible. Los resultados y limitaciones reales están en [la plantilla](docs/03-plantilla-pruebas.md); las capturas previstas están en [capturas](docs/evidencias/capturas-aplicacion/README.md) y [Firebase](docs/evidencias/firebase/README.md). Aún no hay capturas reales.
 
 ## Índice de atestados
 

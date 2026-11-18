@@ -1,10 +1,2 @@
 Analyzing practica-integracion-pruebas-flutter...               
-
-   info - 'package:flutter/material.dart' is deprecated and shouldn't be used. Use package:material_ui/material_ui.dart instead. This feature was deprecated after v3.47.0-0.0.pre. Try replacing the use of the deprecated member with the replacement - lib\data\notification_service.dart:5:1 - deprecated_member_use
-   info - 'package:flutter/material.dart' is deprecated and shouldn't be used. Use package:material_ui/material_ui.dart instead. This feature was deprecated after v3.47.0-0.0.pre. Try replacing the use of the deprecated member with the replacement - lib\main.dart:1:1 - deprecated_member_use
-   info - 'package:flutter/material.dart' is deprecated and shouldn't be used. Use package:material_ui/material_ui.dart instead. This feature was deprecated after v3.47.0-0.0.pre. Try replacing the use of the deprecated member with the replacement - test\support\app_flow_scenario.dart:2:1 - deprecated_member_use
-   info - 'package:flutter/material.dart' is deprecated and shouldn't be used. Use package:material_ui/material_ui.dart instead. This feature was deprecated after v3.47.0-0.0.pre. Try replacing the use of the deprecated member with the replacement - test\widget\flows_test.dart:2:1 - deprecated_member_use
-   info - 'package:flutter/material.dart' is deprecated and shouldn't be used. Use package:material_ui/material_ui.dart instead. This feature was deprecated after v3.47.0-0.0.pre. Try replacing the use of the deprecated member with the replacement - test\widget\task_page_test.dart:2:1 - deprecated_member_use
-   info - 'package:flutter/material.dart' is deprecated and shouldn't be used. Use package:material_ui/material_ui.dart instead. This feature was deprecated after v3.47.0-0.0.pre. Try replacing the use of the deprecated member with the replacement - test\widget\unchanged_test.dart:1:1 - deprecated_member_use
-
-6 issues found. (ran in 5.7s)
+No issues found! (ran in 13.5s)

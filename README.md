@@ -18,6 +18,9 @@ flowchart LR
 
 La interfaz recibe repositorios por constructor; las pruebas sustituyen Firebase por fakes. Las reglas restringen `users/{uid}/tasks` a su propietario. FCM guarda el token en el documento del propio usuario.
 
+## Versión Android
+
+Descarga el APK firmado o el AAB de la versión 1.0.0 en https://github.com/OswaldoGB-INDUPAL/practica-integracion-pruebas-flutter/releases/tag/v1.0.0. El APK se instaló y abrió en un emulador Android; el envío de notificaciones FCM y el flujo completo de la interfaz con Firebase alojado aún no se han verificado. Para compilar de nuevo, consulta [Publicación Android](docs/PUBLICACION-ANDROID.md).
 ## Requisitos y ejecución
 
 - Flutter 3.50.0 / Dart 3.14.0 (versiones usadas para las pruebas), Android SDK y emulador o dispositivo Android API 33 o posterior recomendado.

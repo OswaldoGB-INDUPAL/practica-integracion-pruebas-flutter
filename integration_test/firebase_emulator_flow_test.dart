@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter/foundation.dart'
+    show defaultTargetPlatform, kIsWeb, TargetPlatform;
 import 'package:integration_test/integration_test.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:practica_integracion_pruebas_flutter/data/repositories.dart';
@@ -45,8 +47,11 @@ void main() {
           authDomain: 'demo-semana16.firebaseapp.com',
         ),
       );
-      await FirebaseAuth.instance.useAuthEmulator('127.0.0.1', 9099);
-      FirebaseFirestore.instance.useFirestoreEmulator('127.0.0.1', 8094);
+      final host = !kIsWeb && defaultTargetPlatform == TargetPlatform.android
+          ? '10.0.2.2'
+          : '127.0.0.1';
+      await FirebaseAuth.instance.useAuthEmulator(host, 9099);
+      FirebaseFirestore.instance.useFirestoreEmulator(host, 8094);
       await FirebaseAuth.instance.signOut();
 
       final email = 'prueba${DateTime.now().microsecondsSinceEpoch}@test.com';

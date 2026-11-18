@@ -41,7 +41,7 @@
 - **Pasos:** 1. Ejecutar `flutter analyze` con Flutter 3.50. 2. Revisar los imports de Material.
 - **Esperado:** análisis sin observaciones. **Obtenido:** seis observaciones de obsolescencia y código de salida 1.
 - **Causa:** el proyecto importaba `package:flutter/material.dart`, marcado como obsoleto por el SDK instalado.
-- **Corrección:** se adoptó `material_ui` como en la plantilla del SDK y se actualizaron los imports; commit `3a9b7cb` (`fix: INC-004 migrar Material y eliminar avisos del análisis`).
+- **Corrección:** se adoptó `material_ui` como en la plantilla del SDK y se actualizaron los imports; commit `731d308` (`fix: INC-004 migrar Material y eliminar avisos del análisis`).
 - **Regresión:** `flutter analyze` terminó con «No issues found» y código 0; `flutter test` pasó 15/15. Salidas en `evidencias/pruebas-y-analisis/`.
 - **Estado:** Verificada con análisis y pruebas automatizadas; compilación Android pendiente.
 
@@ -51,7 +51,7 @@
 - **Pasos:** 1. Iniciar sesión con un token FCM. 2. Revisar la salida de `saveToken` en una compilación de distribución.
 - **Esperado:** el token solo aparece en el registro de depuración para recoger la evidencia. **Observado por revisión:** la llamada a `debugPrint` era incondicional.
 - **Causa:** el mensaje no comprobaba el modo de compilación.
-- **Corrección:** `lib/data/notification_service.dart` registra el token solamente si `kDebugMode` es verdadero; commit `2597e0f` (`fix: INC-005 limitar registro de token a depuración`).
+- **Corrección:** `lib/data/notification_service.dart` registra el token solamente si `kDebugMode` es verdadero; commit `5157908` (`fix: INC-005 limitar registro de token a depuración`).
 - **Regresión:** `flutter analyze` sin observaciones y `flutter test` 15/15; pendiente de comprobar registros en compilaciones Android de depuración y distribución.
 - **Estado:** Corregida; verificación Android pendiente.
 
@@ -62,8 +62,8 @@
 - **Esperado:** la cuenta anterior deja de dirigir notificaciones a este dispositivo. **Observado por revisión:** `signOut` solo cierra Firebase Auth y `setUser(null)` no elimina el campo ni revoca el token.
 - **Causa:** falta coordinar el ciclo del token entre el cierre de sesión, Firestore y FCM; también deben contemplarse la caducidad de sesión y la falta de red.
 - **Corrección aplicada:** en el cierre explícito, el servicio deja de aceptar escrituras nuevas, intenta esperar las pendientes y elimina el campo mediante una transacción solo si coincide con el token de este dispositivo; también intenta desactivar el registro automático y revocar el token. Los intentos tienen tiempo limitado y el cierre continúa si fallan.
-- **Commit:** `ef5ae7d` (`fix: INC-006 intentar desvincular token al cerrar sesión`). **Prueba de regresión:** `test/unit/sign_out_test.dart` verifica el orden y el cierre cuando la limpieza falla; `test/unit/notification_session_test.dart` comprueba que se inicia la limpieza al cambiar la sesión y que el siguiente registro espera; salidas inicial y final en `evidencias/pruebas-y-analisis/`. `test/unit/token_cleanup_test.dart` comprueba la comparación y borrado usando Firestore simulado (`69f1015`); ninguna prueba comprueba la transacción ni FCM reales.
-- **Estado:** Parcialmente corregida, abierta hasta verificar con Firebase y dispositivo. La caducidad automática y el cambio directo de usuario también inician la limpieza, y el registro siguiente espera ese intento (`330f62d`). Si la sesión ya caducó, Firestore puede rechazar la eliminación del campo; sin red o ante operaciones tardías el token puede continuar asociado. No enviar datos sensibles mientras persista el riesgo.
+- **Commit:** `9e43708` (`fix: INC-006 intentar desvincular token al cerrar sesión`). **Prueba de regresión:** `test/unit/sign_out_test.dart` verifica el orden y el cierre cuando la limpieza falla; `test/unit/notification_session_test.dart` comprueba que se inicia la limpieza al cambiar la sesión y que el siguiente registro espera; salidas inicial y final en `evidencias/pruebas-y-analisis/`. `test/unit/token_cleanup_test.dart` comprueba la comparación y borrado usando Firestore simulado (`b50b4c9`); ninguna prueba comprueba la transacción ni FCM reales.
+- **Estado:** Parcialmente corregida, abierta hasta verificar con Firebase y dispositivo. La caducidad automática y el cambio directo de usuario también inician la limpieza, y el registro siguiente espera ese intento (`df3205e`). Si la sesión ya caducó, Firestore puede rechazar la eliminación del campo; sin red o ante operaciones tardías el token puede continuar asociado. No enviar datos sensibles mientras persista el riesgo.
 
 ## INC-007 — La prueba de integración no compilaba en web
 
@@ -71,7 +71,7 @@
 - **Pasos:** 1. Crear la plataforma web en una copia temporal. 2. Ejecutar `flutter drive` con `integration_test/app_flow_test.dart`.
 - **Esperado:** cargar el escenario y ejecutar el flujo. **Obtenido:** el compilador no encontró `../test/support/app_flow_scenario.dart`.
 - **Causa:** el import relativo salía de la raíz virtual usada para compilar la prueba en web.
-- **Corrección:** el escenario compartido se trasladó a `integration_test/support/` y se actualizaron los imports; commit `913c1af` (`fix: INC-007 corregir importación de integración web`).
+- **Corrección:** el escenario compartido se trasladó a `integration_test/support/` y se actualizaron los imports; commit `eaa857a` (`fix: INC-007 corregir importación de integración web`).
 - **Regresión:** el flujo de integración pasó en Edge sin interfaz, con repositorios simulados; `flutter-integration-web-final.txt` contiene la salida con tokens efímeros de depuración ocultados. La prueba de widget y la suite Flutter también pasaron.
 - **Estado:** Verificada en web con fakes; Android y Firebase real pendientes.
 

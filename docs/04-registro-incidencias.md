@@ -65,4 +65,14 @@
 - **Commit:** `ef5ae7d` (`fix: INC-006 intentar desvincular token al cerrar sesión`). **Prueba de regresión:** `test/unit/sign_out_test.dart` verifica el orden y el cierre cuando la limpieza falla; `test/unit/notification_session_test.dart` comprueba que se inicia la limpieza al cambiar la sesión y que el siguiente registro espera; salidas inicial y final en `evidencias/pruebas-y-analisis/`. `test/unit/token_cleanup_test.dart` comprueba la comparación y borrado usando Firestore simulado (`69f1015`); ninguna prueba comprueba la transacción ni FCM reales.
 - **Estado:** Parcialmente corregida, abierta hasta verificar con Firebase y dispositivo. La caducidad automática y el cambio directo de usuario también inician la limpieza, y el registro siguiente espera ese intento (`330f62d`). Si la sesión ya caducó, Firestore puede rechazar la eliminación del campo; sin red o ante operaciones tardías el token puede continuar asociado. No enviar datos sensibles mientras persista el riesgo.
 
-**Resumen:** 1 crítica, 3 altas, 1 media y 1 baja; orígenes: UI 1, navegación 1, FCM 3, configuración 1. La apertura inicial diferida de una notificación también se ajustó en `192dca4`, pero no se contabiliza como incidencia verificada sin ejecución real.
+## INC-007 — La prueba de integración no compilaba en web
+
+- **Caso:** CP-46. **Severidad:** Media. **Prioridad:** P2. **Origen:** Configuración.
+- **Pasos:** 1. Crear la plataforma web en una copia temporal. 2. Ejecutar `flutter drive` con `integration_test/app_flow_test.dart`.
+- **Esperado:** cargar el escenario y ejecutar el flujo. **Obtenido:** el compilador no encontró `../test/support/app_flow_scenario.dart`.
+- **Causa:** el import relativo salía de la raíz virtual usada para compilar la prueba en web.
+- **Corrección:** el escenario compartido se trasladó a `integration_test/support/` y se actualizaron los imports; commit `913c1af` (`fix: INC-007 corregir importación de integración web`).
+- **Regresión:** el flujo de integración pasó en Edge sin interfaz, con repositorios simulados; `flutter-integration-web-final.txt` contiene la salida con tokens efímeros de depuración ocultados. La prueba de widget y la suite Flutter también pasaron.
+- **Estado:** Verificada en web con fakes; Android y Firebase real pendientes.
+
+**Resumen:** 1 crítica, 3 altas, 2 medias y 1 baja; orígenes: UI 1, navegación 1, FCM 3, configuración 2. La apertura inicial diferida de una notificación también se ajustó en `192dca4`, pero no se contabiliza como incidencia verificada sin ejecución real.

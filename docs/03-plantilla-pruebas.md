@@ -49,11 +49,12 @@ Las pruebas simuladas comprueban UI y lógica, no sustituyen Firebase ni Android
 | CP-43 | FCM | FC-05 | Positivo | Retirar token propio | token guardado coincide con token actual | Se elimina el campo y se conservan los demás | El campo se eliminó en Firestore simulado. | Aprobado | Pendiente manual | ../test/unit/token_cleanup_test.dart |
 | CP-44 | FCM | FC-05 | Negativo | Conservar token de otro dispositivo | token guardado distinto del actual | El token ajeno permanece | El campo permaneció en Firestore simulado. | Aprobado | Pendiente manual | ../test/unit/token_cleanup_test.dart |
 | CP-45 | FCM | FC-05 | Negativo | Usuario sin documento | usuario sin documento, token actual | No se crea documento | El documento siguió ausente en Firestore simulado. | Aprobado | Pendiente manual | ../test/unit/token_cleanup_test.dart |
+| CP-46 | Integración | FC-01/FC-02/FC-05 | Positivo | Flujo completo en Edge con fakes | prueba1@test.com; Comprar café | Acceso, creación y cierre completados | El flujo de integración terminó correctamente en Edge con servicios simulados. | Aprobado | Pendiente Android | evidencias/pruebas-y-analisis/flutter-integration-web-final.txt |
 
 ## Análisis de resultados
 
-Total: 45; aplicables: 44; ejecutados: 30; aprobados: 30; fallidos: 0; no ejecutados: 1; pendientes: 14.
+Total: 46; aplicables: 45; ejecutados: 31; aprobados: 31; fallidos: 0; no ejecutados: 1; pendientes: 14.
 
 Aprobación de flujos críticos = casos aprobados de flujos críticos / casos aplicables de flujos críticos × 100. **PENDIENTE:** completar ejecución real y reinicio antes de calcular el porcentaje final.
 
-Análisis inicial: 1 error, 0 advertencias y 5 observaciones informativas. Análisis final: 0 errores, 0 advertencias y 0 observaciones; `flutter analyze` terminó con código 0 tras adoptar `material_ui`. `flutter test`: 27 pruebas aprobadas de 27. Reglas de Firestore en emulador: 4 pruebas aprobadas de 4; las denegaciones registradas corresponden a los casos negativos esperados. Los fallos detectados se concentraron en navegación, inicialización y sintaxis. Las comprobaciones de servicios reales aún no se han ejecutado.
+Análisis inicial: 1 error, 0 advertencias y 5 observaciones informativas. Análisis final: 0 errores, 0 advertencias y 0 observaciones; `flutter analyze` terminó con código 0 tras adoptar `material_ui`. `flutter test`: 27 pruebas aprobadas de 27. Integración en Edge con fakes: 1 flujo aprobado; Android y Firebase real pendientes. Reglas de Firestore en emulador: 4 pruebas aprobadas de 4; las denegaciones registradas corresponden a los casos negativos esperados. Los fallos detectados se concentraron en navegación, inicialización y sintaxis. Las comprobaciones de servicios reales aún no se han ejecutado.

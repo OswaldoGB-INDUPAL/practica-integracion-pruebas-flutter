@@ -21,3 +21,5 @@ Las salidas `flutter-test-inicial-INC-006.txt` y `flutter-test-regresion-INC-006
 Las salidas `flutter-test-caducidad-inicial.txt` y `flutter-test-caducidad-regresion.txt` muestran la regresión de coordinación simulada al cambiar la sesión; no comprueban FCM real.
 
 `flutter-test-token-firestore-fake.txt` muestra tres pruebas de borrado selectivo con Firestore simulado; no prueba FCM ni condiciones reales de red.
+
+`flutter-integration-web-inicial.txt` registra el fallo de compilación inicial y `flutter-integration-web-final.txt` la ejecución exitosa en Edge con fakes; los tokens locales efímeros se ocultaron. `flutter-build-apk-intento.txt` registra que falta Android SDK.

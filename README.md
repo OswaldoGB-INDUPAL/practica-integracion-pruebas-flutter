@@ -42,7 +42,7 @@ flutter test
 flutter test integration_test/app_flow_test.dart -d <id-dispositivo>
 ```
 
-Con Flutter 3.50, `flutter analyze` terminó sin observaciones. Las reglas de Firestore también se probaron con el emulador local (4/4); requieren Node.js 20 o superior y Java 21. Para repetirlas: `cd rules_tests`, `npm install` y `npm test`. Las pruebas de `test/` usan fakes y no validan Firebase real. El flujo de integración necesita un dispositivo compatible. Los resultados y limitaciones reales están en [la plantilla](docs/03-plantilla-pruebas.md); las capturas previstas están en [capturas](docs/evidencias/capturas-aplicacion/README.md) y [Firebase](docs/evidencias/firebase/README.md). Aún no hay capturas reales.
+Con Flutter 3.50, `flutter analyze` terminó sin observaciones. Las reglas de Firestore también se probaron con el emulador local (4/4); requieren Node.js 20 o superior y Java 21. Para repetirlas: `cd rules_tests`, `npm install` y `npm test`. Las pruebas de `test/` usan fakes y no validan Firebase real. El flujo de integración pasó en Edge con fakes; Android y Firebase real siguen pendientes. Los resultados y limitaciones reales están en [la plantilla](docs/03-plantilla-pruebas.md); las capturas previstas están en [capturas](docs/evidencias/capturas-aplicacion/README.md) y [Firebase](docs/evidencias/firebase/README.md). Aún no hay capturas reales.
 
 ## Índice de atestados
 
@@ -71,6 +71,7 @@ Con Flutter 3.50, `flutter analyze` terminó sin observaciones. Las reglas de Fi
 | INC-003 | Paréntesis faltante en pantalla de acceso | `d4cc7be` | Compilación de pruebas y suite aprobadas |
 | INC-004 | Migración a la API Material vigente | `3a9b7cb` | Análisis sin observaciones y suite aprobada |
 | INC-005 | Registro del token solo en depuración | `2597e0f` | Análisis y suite aprobados; Android pendiente |
+| INC-007 | Importación de integración web | `913c1af` | Flujo aprobado en Edge con fakes |
 
 Los enlaces directos a commits de GitHub se agregan tras publicar el repositorio. Los resultados Android, Firebase, FCM y capturas permanecen pendientes hasta ejecutarlos.
 

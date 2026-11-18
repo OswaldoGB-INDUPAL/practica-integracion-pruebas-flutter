@@ -18,3 +18,13 @@ Las rutas de captura anteriores son relativas a `docs/evidencias/`. No marques c
 El intento de integración en Windows quedó registrado en `pruebas-y-analisis/flutter-integration-windows.txt`: se necesita activar el modo de desarrollador para permitir enlaces simbólicos. El mismo recorrido sí pasó como prueba de widget con fakes; aún falta ejecutarlo en dispositivo.
 
 En un segundo intento se construyó correctamente la copia Windows usando enlaces de directorio en el espacio temporal, pero una política de control de aplicaciones bloqueó el ejecutable. El resultado completo está en `pruebas-y-analisis/flutter-integration-windows-segundo-intento.txt`; no constituye una prueba de integración aprobada.
+
+## Repetir la integración en Edge con fakes
+
+En una copia temporal del repositorio ejecuta `flutter create --platforms web .`. Descarga el EdgeDriver oficial que coincida con la versión de Edge. En terminales separadas inicia `msedgedriver --port=4444` y `node tools/edge_webdriver_proxy.cjs`. El adaptador local corrige las capacidades que Flutter 3.50 envía a EdgeDriver; escucha solo en `127.0.0.1:4445`. Después ejecuta:
+
+```sh
+flutter drive --driver=test_driver/integration_test.dart --target=integration_test/app_flow_test.dart -d web-server --browser-name=edge --driver-port=4445 --headless
+```
+
+Al finalizar detén EdgeDriver y el adaptador. Este ensayo utiliza fakes y no sustituye Android, Firebase real ni las capturas. Los tokens efímeros de depuración deben ocultarse antes de compartir la salida.

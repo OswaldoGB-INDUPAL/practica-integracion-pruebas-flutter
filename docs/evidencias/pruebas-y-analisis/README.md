@@ -27,3 +27,5 @@ Las salidas `flutter-test-caducidad-inicial.txt` y `flutter-test-caducidad-regre
 `flutter-integration-firebase-emuladores.txt` registra el flujo en Edge con los repositorios Firebase y emuladores locales; los tokens efímeros del depurador están ocultos. No comprueba FCM ni Firebase alojado.
 
 `flutter-integration-firebase-reingreso.txt` registra el flujo ampliado con credenciales inválidas, reingreso válido y reconstrucción de interfaz. No demuestra reinicio de proceso ni Firebase alojado.
+
+`flutter-integration-web-detalle.txt` comprueba argumentos y regreso con fakes. `flutter-integration-firebase-orden.txt` registra el flujo con Auth y Firestore emulados, incluyendo tres tareas ordenadas.

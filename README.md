@@ -2,7 +2,7 @@
 
 Aplicación de tareas por usuario con autenticación, Firestore y notificaciones. Práctica Semana 16 — Integración y pruebas, Electiva 1, UTEC. El proyecto se creó desde cero porque el directorio de trabajo no contenía un proyecto Flutter.
 
-Autor: Oswaldo Guevara — [Carnet]. [Compañero/a, si aplica]. Repositorio público: pendiente de publicación.
+Autor: Oswaldo Guevara — [Carnet]. [Compañero/a, si aplica]. Repositorio público: [https://github.com/OswaldoGB-INDUPAL/practica-integracion-pruebas-flutter](https://github.com/OswaldoGB-INDUPAL/practica-integracion-pruebas-flutter).
 
 ## Arquitectura
 
@@ -24,7 +24,7 @@ La interfaz recibe repositorios por constructor; las pruebas sustituyen Firebase
 - Cuenta y proyecto de Firebase, Firebase CLI y FlutterFire CLI.
 
 ```sh
-git clone <URL_DEL_REPOSITORIO>
+git clone https://github.com/OswaldoGB-INDUPAL/practica-integracion-pruebas-flutter.git
 cd practica-integracion-pruebas-flutter
 git checkout semana16-integracion
 flutter pub get
@@ -66,13 +66,14 @@ Con Flutter 3.50, `flutter analyze` terminó sin observaciones. Las reglas de Fi
 
 | ID | Corrección | Commit local | Verificación |
 |---|---|---|---|
-| INC-001 | Limpieza de rutas al cambiar sesión | `192dca4` | Prueba fake aprobada después de corregir |
-| INC-002 | El fallo de FCM no bloquea el arranque | `b4ac250` | Pendiente |
-| INC-003 | Paréntesis faltante en pantalla de acceso | `d4cc7be` | Compilación de pruebas y suite aprobadas |
-| INC-004 | Migración a la API Material vigente | `3a9b7cb` | Análisis sin observaciones y suite aprobada |
-| INC-005 | Registro del token solo en depuración | `2597e0f` | Análisis y suite aprobados; Android pendiente |
-| INC-007 | Importación de integración web | `913c1af` | Flujo aprobado en Edge con fakes |
+| INC-001 | Limpieza de rutas al cambiar sesión | [192dca4](https://github.com/OswaldoGB-INDUPAL/practica-integracion-pruebas-flutter/commit/192dca4) | Prueba fake aprobada después de corregir |
+| INC-002 | El fallo de FCM no bloquea el arranque | [b4ac250](https://github.com/OswaldoGB-INDUPAL/practica-integracion-pruebas-flutter/commit/b4ac250) | Pendiente |
+| INC-003 | Paréntesis faltante en pantalla de acceso | [d4cc7be](https://github.com/OswaldoGB-INDUPAL/practica-integracion-pruebas-flutter/commit/d4cc7be) | Compilación de pruebas y suite aprobadas |
+| INC-004 | Migración a la API Material vigente | [3a9b7cb](https://github.com/OswaldoGB-INDUPAL/practica-integracion-pruebas-flutter/commit/3a9b7cb) | Análisis sin observaciones y suite aprobada |
+| INC-006 | Limpieza del token al cambiar sesión | [ef5ae7d](https://github.com/OswaldoGB-INDUPAL/practica-integracion-pruebas-flutter/commit/ef5ae7d) | Parcial; FCM real pendiente |
+| INC-005 | Registro del token solo en depuración | [2597e0f](https://github.com/OswaldoGB-INDUPAL/practica-integracion-pruebas-flutter/commit/2597e0f) | Análisis y suite aprobados; Android pendiente |
+| INC-007 | Importación de integración web | [913c1af](https://github.com/OswaldoGB-INDUPAL/practica-integracion-pruebas-flutter/commit/913c1af) | Flujo aprobado en Edge con fakes |
 
-Los enlaces directos a commits de GitHub se agregan tras publicar el repositorio. Los resultados Android, Firebase, FCM y capturas permanecen pendientes hasta ejecutarlos.
+Los resultados Android, Firebase, FCM y capturas permanecen pendientes hasta ejecutarlos.
 
 **Incidencia abierta:** la limpieza del token FCM al cerrar sesión es de mejor esfuerzo y está pendiente de verificar con Firebase; puede quedar asociado sin red o cuando Firestore rechaza la limpieza tras caducar la sesión (INC-006). Evita enviar datos sensibles en notificaciones hasta corregir y verificar su ciclo de vida.

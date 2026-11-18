@@ -20,6 +20,8 @@ class NotificationService {
   final List<StreamSubscription<dynamic>> subscriptions = [];
   String? uid;
   RemoteMessage? pending;
+  String? _lastToken;
+  final Set<Future<void>> _writes = {};
 
   Future<void> start() async {
     await FirebaseMessaging.instance.requestPermission();
@@ -46,6 +48,7 @@ class NotificationService {
     uid = value;
     if (value == null) return;
     try {
+      await FirebaseMessaging.instance.setAutoInitEnabled(true);
       final token = await FirebaseMessaging.instance.getToken();
       if (token != null && uid == value) await saveToken(value, token);
     } catch (_) {
@@ -62,14 +65,61 @@ class NotificationService {
   }
 
   Future<void> saveToken(String userId, String token) async {
+    if (uid != userId) return;
+    _lastToken = token;
+    final write = FirebaseFirestore.instance
+        .collection('users')
+        .doc(userId)
+        .set({'fcmToken': token}, SetOptions(merge: true));
+    _writes.add(write);
     try {
-      await FirebaseFirestore.instance.collection('users').doc(userId).set({
-        'fcmToken': token,
-      }, SetOptions(merge: true));
+      await write;
       if (kDebugMode) debugPrint('Token FCM: $token');
     } catch (_) {
       debugPrint('No se pudo guardar el token de notificaciones.');
+    } finally {
+      _writes.remove(write);
     }
+  }
+
+  Future<void> prepareSignOut() async {
+    final previousUid = uid;
+    final token = _lastToken;
+    uid = null;
+    pending = null;
+    try {
+      await Future.wait(_writes.toList()).timeout(const Duration(seconds: 2));
+    } catch (_) {
+      debugPrint('Hay escrituras de token pendientes.');
+    }
+    try {
+      await FirebaseMessaging.instance
+          .setAutoInitEnabled(false)
+          .timeout(const Duration(seconds: 1));
+      if (previousUid != null && token != null) {
+        final ref = FirebaseFirestore.instance
+            .collection('users')
+            .doc(previousUid);
+        await FirebaseFirestore.instance
+            .runTransaction((transaction) async {
+              final snapshot = await transaction.get(ref);
+              if (snapshot.data()?['fcmToken'] == token) {
+                transaction.update(ref, {'fcmToken': FieldValue.delete()});
+              }
+            })
+            .timeout(const Duration(seconds: 2));
+      }
+    } catch (_) {
+      debugPrint('No se pudo quitar el token guardado.');
+    }
+    try {
+      await FirebaseMessaging.instance.deleteToken().timeout(
+        const Duration(seconds: 1),
+      );
+    } catch (_) {
+      debugPrint('No se pudo revocar el token del dispositivo.');
+    }
+    _lastToken = null;
   }
 
   Future<void> open(RemoteMessage message) async {

@@ -24,7 +24,7 @@ Future<void> main() async {
   }
   runApp(
     MyApp(
-      auth: FirebaseAuthRepository(),
+      auth: FirebaseAuthRepository(beforeSignOut: notifications.prepareSignOut),
       tasks: FirebaseTaskRepository.new,
       notifications: notifications,
       navigatorKey: navigatorKey,

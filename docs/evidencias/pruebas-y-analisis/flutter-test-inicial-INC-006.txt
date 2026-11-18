@@ -1,0 +1,26 @@
+00:00 +0: loading C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/sign_out_test.dart
+00:00 +0: limpia las notificaciones antes de cerrar Firebase Auth
+00:00 +0 -1: limpia las notificaciones antes de cerrar Firebase Auth [E]
+  Expected: ['token', 'auth']
+    Actual: ['auth']
+     Which: at location [0] is 'auth' instead of 'token'
+  
+  package:matcher                                     expect
+  package:flutter_test/src/widget_tester.dart 473:18  expect
+  test\unit\sign_out_test.dart 16:5                   main.<fn>
+  
+00:00 +0 -1: permite cerrar sesión cuando falla la limpieza sin conexión
+00:00 +0 -2: permite cerrar sesión cuando falla la limpieza sin conexión [E]
+  Expected: ['token', 'auth']
+    Actual: ['auth']
+     Which: at location [0] is 'auth' instead of 'token'
+  
+  package:matcher                                     expect
+  package:flutter_test/src/widget_tester.dart 473:18  expect
+  test\unit\sign_out_test.dart 22:5                   main.<fn>
+  
+00:00 +0 -2: Some tests failed.
+
+Failing tests:
+  C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/sign_out_test.dart: limpia las notificaciones antes de cerrar Firebase Auth
+  C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/sign_out_test.dart: permite cerrar sesión cuando falla la limpieza sin conexión

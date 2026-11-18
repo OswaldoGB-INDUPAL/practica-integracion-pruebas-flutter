@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart' show debugPrint;
 import '../models/task.dart';
 
 class AppException implements Exception {
@@ -67,7 +68,10 @@ abstract class AuthRepository {
 }
 
 class FirebaseAuthRepository implements AuthRepository {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  FirebaseAuthRepository({FirebaseAuth? auth, this.beforeSignOut})
+    : _auth = auth ?? FirebaseAuth.instance;
+  final FirebaseAuth _auth;
+  final Future<void> Function()? beforeSignOut;
   @override
   Stream<String?> authState() =>
       _auth.authStateChanges().map((user) => user?.uid);
@@ -98,6 +102,13 @@ class FirebaseAuthRepository implements AuthRepository {
 
   @override
   Future<void> signOut() async {
+    try {
+      await beforeSignOut?.call().timeout(const Duration(seconds: 6));
+    } catch (_) {
+      debugPrint(
+        'No se pudo desvincular el dispositivo antes de cerrar sesión.',
+      );
+    }
     try {
       await _auth.signOut();
     } on FirebaseAuthException {

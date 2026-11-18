@@ -1,0 +1,5 @@
+00:00 +0: loading C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/sign_out_test.dart
+00:00 +0: limpia las notificaciones antes de cerrar Firebase Auth
+00:00 +1: permite cerrar sesión cuando falla la limpieza sin conexión
+No se pudo desvincular el dispositivo antes de cerrar sesión.
+00:00 +2: All tests passed!

@@ -1,0 +1,8 @@
+00:00 +0: loading C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/notification_session_test.dart
+00:00 +0: la caducidad de sesión también inicia la limpieza FCM
+00:00 +1: la primera emisión sin sesión no limpia un token inexistente
+00:00 +2: el siguiente inicio espera la limpieza anterior
+No se pudo obtener el token de notificaciones.
+00:00 +3: cambiar directamente de usuario inicia la limpieza anterior
+No se pudo obtener el token de notificaciones.
+00:00 +4: All tests passed!

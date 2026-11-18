@@ -1,2 +1,2 @@
 Analyzing practica-integracion-pruebas-flutter...               
-No issues found! (ran in 13.8s)
+No issues found! (ran in 12.7s)

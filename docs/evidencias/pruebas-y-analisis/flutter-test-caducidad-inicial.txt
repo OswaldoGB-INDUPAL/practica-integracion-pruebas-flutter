@@ -1,0 +1,15 @@
+00:00 +0: loading C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/notification_session_test.dart
+00:00 +0: la caducidad de sesión también inicia la limpieza FCM
+00:00 +0 -1: la caducidad de sesión también inicia la limpieza FCM [E]
+  Expected: <1>
+    Actual: <0>
+  
+  package:matcher                                     expect
+  package:flutter_test/src/widget_tester.dart 473:18  expect
+  test\unit\notification_session_test.dart 17:5       main.<fn>
+  
+00:00 +0 -1: la primera emisión sin sesión no limpia un token inexistente
+00:00 +1 -1: Some tests failed.
+
+Failing tests:
+  C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/notification_session_test.dart: la caducidad de sesión también inicia la limpieza FCM

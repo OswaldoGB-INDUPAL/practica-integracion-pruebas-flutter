@@ -22,6 +22,7 @@ class NotificationService {
   RemoteMessage? pending;
   String? _lastToken;
   final Set<Future<void>> _writes = {};
+  Future<void>? _cleanup;
 
   Future<void> start() async {
     await FirebaseMessaging.instance.requestPermission();
@@ -45,10 +46,32 @@ class NotificationService {
   }
 
   Future<void> setUser(String? value) async {
+    if (value == null) {
+      if (uid != null) {
+        final cleanup = prepareSignOut();
+        _cleanup = cleanup;
+        try {
+          await cleanup;
+        } finally {
+          if (identical(_cleanup, cleanup)) _cleanup = null;
+        }
+      }
+      return;
+    }
+    if (uid != null && uid != value) _cleanup = prepareSignOut();
     uid = value;
-    if (value == null) return;
+    final cleanup = _cleanup;
+    if (cleanup != null) {
+      try {
+        await cleanup;
+      } finally {
+        if (identical(_cleanup, cleanup)) _cleanup = null;
+      }
+    }
+    if (uid != value) return;
     try {
       await FirebaseMessaging.instance.setAutoInitEnabled(true);
+      if (uid != value) return;
       final token = await FirebaseMessaging.instance.getToken();
       if (token != null && uid == value) await saveToken(value, token);
     } catch (_) {
@@ -82,7 +105,18 @@ class NotificationService {
     }
   }
 
-  Future<void> prepareSignOut() async {
+  Future<void> prepareSignOut() {
+    final existing = _cleanup;
+    if (existing != null) return existing;
+    final cleanup = _performSignOutCleanup();
+    _cleanup = cleanup;
+    cleanup.whenComplete(() {
+      if (identical(_cleanup, cleanup)) _cleanup = null;
+    });
+    return cleanup;
+  }
+
+  Future<void> _performSignOutCleanup() async {
     final previousUid = uid;
     final token = _lastToken;
     uid = null;

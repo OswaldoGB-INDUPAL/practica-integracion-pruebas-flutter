@@ -35,10 +35,14 @@ Las pruebas simuladas comprueban UI y lógica, no sustituyen Firebase ni Android
 | CP-29 | Edición | FC-03 | Positivo | Editar con fake | Café → Comprar café | Se guarda el título y conserva el id | Se guarda el título y conserva el id con fake o prueba unitaria. | Aprobado | Pendiente manual | ../test/widget/flows_test.dart |
 | CP-30 | Integración | FC-01/FC-02/FC-05 | Positivo | Flujo completo con fakes | prueba1@test.com; Comprar café | Acceso, creación y cierre correctos | Flujo completo aprobado con fakes en prueba de widget. | Aprobado | Pendiente manual | ../test/widget/full_flow_test.dart |
 
+| CP-31 | FCM | FC-04 | Positivo | Abrir detalle simulado | route=/detalle, id=t1; usuario u1 | Se muestra Comprar café | El detalle se mostró con repositorio fake. | Aprobado | Pendiente manual | ../test/widget/notification_navigation_test.dart |
+| CP-32 | FCM | FC-04 | Negativo | Rechazar ruta no permitida | route=/administracion, id=t1 | No se consulta la tarea | No se consultó el repositorio fake. | Aprobado | Pendiente manual | ../test/widget/notification_navigation_test.dart |
+| CP-33 | FCM | FC-04 | Negativo | Cambiar sesión durante lectura | usuario u1 → sin sesión, id=t1 | No se abre el detalle | El detalle no se abrió con el repositorio fake. | Aprobado | Pendiente manual | ../test/widget/notification_navigation_test.dart |
+
 ## Análisis de resultados
 
-Total: 30; aplicables: 29; ejecutados: 14; aprobados: 14; fallidos: 0; no ejecutados: 1; pendientes: 15.
+Total: 33; aplicables: 32; ejecutados: 17; aprobados: 17; fallidos: 0; no ejecutados: 1; pendientes: 15.
 
 Aprobación de flujos críticos = casos aprobados de flujos críticos / casos aplicables de flujos críticos × 100. **PENDIENTE:** completar ejecución real y reinicio antes de calcular el porcentaje final.
 
-Análisis inicial: 1 error, 0 advertencias y 5 observaciones informativas. Análisis final: 0 errores, 0 advertencias y 0 observaciones; `flutter analyze` terminó con código 0 tras adoptar `material_ui`. `flutter test`: 15 pruebas aprobadas de 15. Los fallos detectados se concentraron en navegación, inicialización y sintaxis. Las comprobaciones de servicios reales aún no se han ejecutado.
+Análisis inicial: 1 error, 0 advertencias y 5 observaciones informativas. Análisis final: 0 errores, 0 advertencias y 0 observaciones; `flutter analyze` terminó con código 0 tras adoptar `material_ui`. `flutter test`: 18 pruebas aprobadas de 18. Los fallos detectados se concentraron en navegación, inicialización y sintaxis. Las comprobaciones de servicios reales aún no se han ejecutado.

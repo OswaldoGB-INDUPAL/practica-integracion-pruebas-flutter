@@ -74,4 +74,4 @@ Con Flutter 3.50, `flutter analyze` terminó sin observaciones. Las reglas de Fi
 
 Los enlaces directos a commits de GitHub se agregan tras publicar el repositorio. Los resultados Android, Firebase, FCM y capturas permanecen pendientes hasta ejecutarlos.
 
-**Incidencia abierta:** la limpieza del token FCM al cerrar sesión es de mejor esfuerzo y está pendiente de verificar con Firebase; puede quedar asociado sin red o al caducar automáticamente la sesión (INC-006). Evita enviar datos sensibles en notificaciones hasta corregir y verificar su ciclo de vida.
+**Incidencia abierta:** la limpieza del token FCM al cerrar sesión es de mejor esfuerzo y está pendiente de verificar con Firebase; puede quedar asociado sin red o cuando Firestore rechaza la limpieza tras caducar la sesión (INC-006). Evita enviar datos sensibles en notificaciones hasta corregir y verificar su ciclo de vida.

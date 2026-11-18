@@ -42,11 +42,15 @@ Las pruebas simuladas comprueban UI y lógica, no sustituyen Firebase ni Android
 | CP-36 | Seguridad | FC-04 | Negativo | Proteger token de otra cuenta | usuario B intenta leer o cambiar token de A | Permiso denegado | El emulador rechazó lectura y cambio; permitió acceso propio. | Aprobado | Pendiente manual | ../rules_tests/rules.test.mjs |
 | CP-37 | Sesión | FC-05 | Positivo | Limpiar token antes del cierre | limpieza simulada exitosa | Limpieza antes de cerrar Auth | Orden de llamadas comprobado con fake. | Aprobado | Pendiente manual | ../test/unit/sign_out_test.dart |
 | CP-38 | Sesión | FC-05 | Negativo | Cierre sin conexión | limpieza simulada con excepción | Auth cierra igualmente | Cierre ejecutado después del error simulado. | Aprobado | Pendiente manual | ../test/unit/sign_out_test.dart |
+| CP-39 | Sesión | FC-05 | Negativo | Caducidad inicia limpieza | usuario A → sin sesión | Se intenta limpiar | Se invocó la limpieza simulada. | Aprobado | Pendiente manual | ../test/unit/notification_session_test.dart |
+| CP-40 | Sesión | FC-05 | Positivo | Inicio sin sesión | usuario inicial nulo | No se limpia un token inexistente | No se invocó la limpieza simulada. | Aprobado | Pendiente manual | ../test/unit/notification_session_test.dart |
+| CP-41 | Sesión | FC-05 | Positivo | Esperar limpieza anterior | salida A, entrada B | El registro de B espera | La operación esperó al fake de limpieza. | Aprobado | Pendiente manual | ../test/unit/notification_session_test.dart |
+| CP-42 | Sesión | FC-05 | Negativo | Cambio directo de usuario | A → B | Se intenta limpiar A | Se invocó la limpieza antes de registrar B. | Aprobado | Pendiente manual | ../test/unit/notification_session_test.dart |
 
 ## Análisis de resultados
 
-Total: 38; aplicables: 37; ejecutados: 23; aprobados: 23; fallidos: 0; no ejecutados: 1; pendientes: 14.
+Total: 42; aplicables: 41; ejecutados: 27; aprobados: 27; fallidos: 0; no ejecutados: 1; pendientes: 14.
 
 Aprobación de flujos críticos = casos aprobados de flujos críticos / casos aplicables de flujos críticos × 100. **PENDIENTE:** completar ejecución real y reinicio antes de calcular el porcentaje final.
 
-Análisis inicial: 1 error, 0 advertencias y 5 observaciones informativas. Análisis final: 0 errores, 0 advertencias y 0 observaciones; `flutter analyze` terminó con código 0 tras adoptar `material_ui`. `flutter test`: 20 pruebas aprobadas de 20. Reglas de Firestore en emulador: 4 pruebas aprobadas de 4; las denegaciones registradas corresponden a los casos negativos esperados. Los fallos detectados se concentraron en navegación, inicialización y sintaxis. Las comprobaciones de servicios reales aún no se han ejecutado.
+Análisis inicial: 1 error, 0 advertencias y 5 observaciones informativas. Análisis final: 0 errores, 0 advertencias y 0 observaciones; `flutter analyze` terminó con código 0 tras adoptar `material_ui`. `flutter test`: 24 pruebas aprobadas de 24. Reglas de Firestore en emulador: 4 pruebas aprobadas de 4; las denegaciones registradas corresponden a los casos negativos esperados. Los fallos detectados se concentraron en navegación, inicialización y sintaxis. Las comprobaciones de servicios reales aún no se han ejecutado.

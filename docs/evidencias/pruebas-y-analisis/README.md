@@ -17,3 +17,5 @@ El segundo intento quedó registrado completo en `flutter-integration-windows-se
 `firestore-rules-test.txt` contiene la ejecución real de cuatro pruebas contra el emulador de Firestore, sin proyecto ni datos reales.
 
 Las salidas `flutter-test-inicial-INC-006.txt` y `flutter-test-regresion-INC-006.txt` documentan la prueba de orden y tolerancia a fallos del cierre, no una validación real de FCM.
+
+Las salidas `flutter-test-caducidad-inicial.txt` y `flutter-test-caducidad-regresion.txt` muestran la regresión de coordinación simulada al cambiar la sesión; no comprueban FCM real.

@@ -80,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
     TextFormField(controller: password, obscureText: true, decoration: const InputDecoration(labelText: 'Contraseña'), validator: (v) => v == null || v.length < 6 ? 'Ingresa al menos 6 caracteres.' : null),
     const SizedBox(height: 20), FilledButton(onPressed: busy ? null : () => submit(false), child: const Text('Iniciar sesión')),
     TextButton(onPressed: busy ? null : () => submit(true), child: const Text('Crear cuenta')),
-  ]))))));
+  ])))))));
 }
 class TaskListPage extends StatefulWidget {
   const TaskListPage({super.key, required this.auth, required this.repository});

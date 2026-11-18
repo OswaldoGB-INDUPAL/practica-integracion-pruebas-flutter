@@ -1,0 +1,14 @@
+00:00 +0: loading C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/task_page_test.dart
+lib/main.dart:78:59: Error: Can't find ')' to match '('.
+  @override Widget build(BuildContext context) => Scaffold(appBar: AppBar(title: const Text('Mis tareas')), body: Center(child: SingleChildScrollView(child: Padding(padding: const EdgeInsets.all(24), child: ConstrainedBox(constraints: const BoxConstraints(maxWidth: 420), child: Form(key: form, child: Column(children: [
+                                                          ^
+00:00 +0 -1: loading C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/task_page_test.dart [E]
+  Failed to load "C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/task_page_test.dart":
+  Compilation failed for testPath=C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/task_page_test.dart: lib/main.dart:78:59: Error: Can't find ')' to match '('.
+    @override Widget build(BuildContext context) => Scaffold(appBar: AppBar(title: const Text('Mis tareas')), body: Center(child: SingleChildScrollView(child: Padding(padding: const EdgeInsets.all(24), child: ConstrainedBox(constraints: const BoxConstraints(maxWidth: 420), child: Form(key: form, child: Column(children: [
+                                                            ^
+  .
+00:00 +0 -1: Some tests failed.
+
+Failing tests:
+  C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/task_page_test.dart: loading C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/task_page_test.dart

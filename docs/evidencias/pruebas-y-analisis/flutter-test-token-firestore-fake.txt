@@ -1,0 +1,5 @@
+00:00 +0: loading C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/token_cleanup_test.dart
+00:00 +0: elimina solo el token del dispositivo actual
+00:00 +1: no elimina el token registrado por otro dispositivo
+00:00 +2: no crea un documento de usuario inexistente
+00:00 +3: All tests passed!

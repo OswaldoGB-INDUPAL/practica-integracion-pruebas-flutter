@@ -12,6 +12,20 @@ Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
 }
 
+Future<void> removeTokenIfMatching(
+  FirebaseFirestore firestore,
+  String uid,
+  String token,
+) async {
+  final ref = firestore.collection('users').doc(uid);
+  await firestore.runTransaction((transaction) async {
+    final snapshot = await transaction.get(ref);
+    if (snapshot.data()?['fcmToken'] == token) {
+      transaction.update(ref, {'fcmToken': FieldValue.delete()});
+    }
+  });
+}
+
 class NotificationService {
   NotificationService(this.navigatorKey, this.scaffoldKey, this.tasks);
   final GlobalKey<NavigatorState> navigatorKey;
@@ -131,17 +145,11 @@ class NotificationService {
           .setAutoInitEnabled(false)
           .timeout(const Duration(seconds: 1));
       if (previousUid != null && token != null) {
-        final ref = FirebaseFirestore.instance
-            .collection('users')
-            .doc(previousUid);
-        await FirebaseFirestore.instance
-            .runTransaction((transaction) async {
-              final snapshot = await transaction.get(ref);
-              if (snapshot.data()?['fcmToken'] == token) {
-                transaction.update(ref, {'fcmToken': FieldValue.delete()});
-              }
-            })
-            .timeout(const Duration(seconds: 2));
+        await removeTokenIfMatching(
+          FirebaseFirestore.instance,
+          previousUid,
+          token,
+        ).timeout(const Duration(seconds: 2));
       }
     } catch (_) {
       debugPrint('No se pudo quitar el token guardado.');

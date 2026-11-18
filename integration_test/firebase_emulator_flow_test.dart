@@ -38,18 +38,20 @@ void main() {
   testWidgets(
     'registro, creación, edición, eliminación y cierre con emuladores Firebase',
     (tester) async {
+      final isAndroid =
+          !kIsWeb && defaultTargetPlatform == TargetPlatform.android;
       await Firebase.initializeApp(
-        options: const FirebaseOptions(
-          apiKey: 'demo-api-key',
-          appId: '1:123456789:web:demo',
-          messagingSenderId: '123456789',
-          projectId: 'demo-semana16',
-          authDomain: 'demo-semana16.firebaseapp.com',
-        ),
+        options: isAndroid
+            ? null
+            : const FirebaseOptions(
+                apiKey: 'demo-api-key',
+                appId: '1:123456789:web:demo',
+                messagingSenderId: '123456789',
+                projectId: 'demo-semana16',
+                authDomain: 'demo-semana16.firebaseapp.com',
+              ),
       );
-      final host = !kIsWeb && defaultTargetPlatform == TargetPlatform.android
-          ? '10.0.2.2'
-          : '127.0.0.1';
+      final host = isAndroid ? '10.0.2.2' : '127.0.0.1';
       await FirebaseAuth.instance.useAuthEmulator(host, 9099);
       FirebaseFirestore.instance.useFirestoreEmulator(host, 8094);
       await FirebaseAuth.instance.signOut();

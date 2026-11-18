@@ -16,3 +16,5 @@ Archivos previstos o generados:
 - `flujo-principal.mp4`
 
 Las imágenes y el video se agregan después de ejecutarlos; no son evidencia hasta que existan.
+
+Captura disponible: android-inicio.png, pantalla de acceso en el emulador Android con el APK de depuración.

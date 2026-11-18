@@ -42,7 +42,7 @@ flutter test
 flutter test integration_test/app_flow_test.dart -d <id-dispositivo>
 ```
 
-Con Flutter 3.50, `flutter analyze` terminó sin observaciones. Las reglas de Firestore también se probaron con el emulador local (4/4); requieren Node.js 20 o superior y Java 21. Para repetirlas: `cd rules_tests`, `npm install` y `npm test`. Las pruebas de `test/` usan fakes y no validan Firebase real. Dos flujos de integración pasaron en Edge: uno con fakes y otro con los repositorios Firebase conectados a emuladores locales de Auth y Firestore. Authentication y Firestore alojados se verificaron mediante sus API con una cuenta temporal; los detalles están en [la evidencia](docs/evidencias/firebase/verificacion-api-real.md). Android y FCM siguen pendientes. Los resultados y limitaciones reales están en [la plantilla](docs/03-plantilla-pruebas.md); las capturas previstas están en [capturas](docs/evidencias/capturas-aplicacion/README.md) y [Firebase](docs/evidencias/firebase/README.md). Aún no hay capturas reales.
+Con Flutter 3.50, `flutter analyze` terminó sin observaciones. Las reglas de Firestore también se probaron con el emulador local (4/4); requieren Node.js 20 o superior y Java 21. Para repetirlas: `cd rules_tests`, `npm install` y `npm test`. Las pruebas de `test/` usan fakes y no validan Firebase real. Dos flujos de integración pasaron en Edge: uno con fakes y otro con los repositorios Firebase conectados a emuladores locales de Auth y Firestore. Authentication y Firestore alojados se verificaron mediante sus API con una cuenta temporal; los detalles están en [la evidencia](docs/evidencias/firebase/verificacion-api-real.md). La app compiló y el flujo de integración pasó en un emulador Android con servicios Firebase emulados; [ver evidencia](docs/evidencias/firebase/android-emulador.md). FCM sigue pendiente. Los resultados y limitaciones reales están en [la plantilla](docs/03-plantilla-pruebas.md); las capturas previstas están en [capturas](docs/evidencias/capturas-aplicacion/README.md) y [Firebase](docs/evidencias/firebase/README.md). Hay una [captura real de la pantalla de acceso en Android](docs/evidencias/capturas-aplicacion/android-inicio.png); faltan las demás capturas.
 
 ## Índice de atestados
 
@@ -74,6 +74,6 @@ Con Flutter 3.50, `flutter analyze` terminó sin observaciones. Las reglas de Fi
 | INC-005 | Registro del token solo en depuración | [5157908](https://github.com/OswaldoGB-INDUPAL/practica-integracion-pruebas-flutter/commit/5157908) | Análisis y suite aprobados; Android pendiente |
 | INC-007 | Importación de integración web | [eaa857a](https://github.com/OswaldoGB-INDUPAL/practica-integracion-pruebas-flutter/commit/eaa857a) | Flujo aprobado en Edge con fakes |
 
-Los resultados Android, Firebase, FCM y capturas permanecen pendientes hasta ejecutarlos.
+La evidencia de Android y Firebase registra el alcance probado; FCM y las capturas restantes permanecen pendientes.
 
 **Incidencia abierta:** la limpieza del token FCM al cerrar sesión es de mejor esfuerzo y está pendiente de verificar con Firebase; puede quedar asociado sin red o cuando Firestore rechaza la limpieza tras caducar la sesión (INC-006). Evita enviar datos sensibles en notificaciones hasta corregir y verificar su ciclo de vida.

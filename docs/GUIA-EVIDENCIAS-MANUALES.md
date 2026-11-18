@@ -31,7 +31,7 @@ Al finalizar detén EdgeDriver y el adaptador. Este ensayo utiliza fakes y no su
 
 ## Repetir el flujo con Auth y Firestore emulados
 
-Con Node.js y Java 21, ejecuta `npm ci` en `rules_tests/`. Desde esa carpeta inicia `npx firebase --config ../firebase-emulators.json emulators:start --only auth,firestore --project demo-semana16`. Los emuladores escuchan únicamente en el equipo local, en los puertos 9099 y 8094; la prueba usa `10.0.2.2` para llegar al host desde el emulador Android y `127.0.0.1` desde web; la configuración del test es ficticia y no usa credenciales reales.
+Con Node.js y Java 21, ejecuta `npm ci` en `rules_tests/`. Desde esa carpeta inicia `npx firebase --config ../firebase-emulators.json emulators:start --only auth,firestore --project demo-semana16`. Los emuladores escuchan únicamente en el equipo local, en los puertos 9099 y 8094; la prueba usa `10.0.2.2` para llegar al host desde el emulador Android y `127.0.0.1` desde web; en web usa una configuración ficticia; en Android utiliza la configuración local de la aplicación, pero dirige Authentication y Firestore a los emuladores.
 
 En una copia temporal con plataforma web, inicia EdgeDriver y el adaptador como en la sección anterior y ejecuta:
 

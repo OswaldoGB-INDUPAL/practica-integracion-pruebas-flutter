@@ -69,5 +69,6 @@ Con Flutter 3.50, `flutter analyze` terminó sin observaciones. Las pruebas de `
 | INC-001 | Limpieza de rutas al cambiar sesión | `192dca4` | Prueba fake aprobada después de corregir |
 | INC-002 | El fallo de FCM no bloquea el arranque | `b4ac250` | Pendiente |
 | INC-003 | Paréntesis faltante en pantalla de acceso | `d4cc7be` | Compilación de pruebas y suite aprobadas |
+| INC-004 | Migración a la API Material vigente | `3a9b7cb` | Análisis sin observaciones y suite aprobada |
 
 Los enlaces directos a commits de GitHub se agregan tras publicar el repositorio. Los resultados Android, Firebase, FCM y capturas permanecen pendientes hasta ejecutarlos.

@@ -35,4 +35,14 @@
 - **Corrección:** cierre del árbol de widgets en `lib/main.dart`; commit `d4cc7be` (`fix: INC-003 cerrar el árbol de widgets de acceso`).
 - **Regresión:** la suite `flutter test` terminó en verde; salidas inicial y final en `evidencias/pruebas-y-analisis/`. **Estado:** Verificada con pruebas automatizadas; dispositivo real pendiente.
 
-**Resumen:** 1 crítica y 2 altas; orígenes: UI 1, navegación 1, FCM 1. La apertura inicial diferida de una notificación también se ajustó en `192dca4`, pero no se contabiliza como incidencia verificada sin ejecución real.
+## INC-004 — La API Material anterior producía avisos en Flutter 3.50
+
+- **Caso:** análisis estático. **Severidad:** Baja. **Prioridad:** P3. **Origen:** Configuración.
+- **Pasos:** 1. Ejecutar `flutter analyze` con Flutter 3.50. 2. Revisar los imports de Material.
+- **Esperado:** análisis sin observaciones. **Obtenido:** seis observaciones de obsolescencia y código de salida 1.
+- **Causa:** el proyecto importaba `package:flutter/material.dart`, marcado como obsoleto por el SDK instalado.
+- **Corrección:** se adoptó `material_ui` como en la plantilla del SDK y se actualizaron los imports; commit `3a9b7cb` (`fix: INC-004 migrar Material y eliminar avisos del análisis`).
+- **Regresión:** `flutter analyze` terminó con «No issues found» y código 0; `flutter test` pasó 15/15. Salidas en `evidencias/pruebas-y-analisis/`.
+- **Estado:** Verificada con análisis y pruebas automatizadas; compilación Android pendiente.
+
+**Resumen:** 1 crítica, 2 altas y 1 baja; orígenes: UI 1, navegación 1, FCM 1, configuración 1. La apertura inicial diferida de una notificación también se ajustó en `192dca4`, pero no se contabiliza como incidencia verificada sin ejecución real.

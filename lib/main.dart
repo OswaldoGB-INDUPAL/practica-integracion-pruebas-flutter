@@ -238,7 +238,14 @@ class TaskListPage extends StatefulWidget {
 }
 
 class _TaskListPageState extends State<TaskListPage> {
-  late final Stream<List<Task>> tasks = widget.repository.watchTasks();
+  late final Stream<List<Task>> tasks;
+
+  @override
+  void initState() {
+    super.initState();
+    tasks = widget.repository.watchTasks();
+  }
+
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(

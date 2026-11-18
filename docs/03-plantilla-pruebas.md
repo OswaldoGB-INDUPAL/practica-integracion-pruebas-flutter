@@ -33,7 +33,6 @@ Las pruebas simuladas comprueban UI y lógica, no sustituyen Firebase ni Android
 | CP-27 | Sesión | FC-05 | Negativo | Caducidad con detalle abierto | usuario1 → sin sesión | Acceso visible; detalle privado ausente | Acceso visible; detalle privado ausente con fake o prueba unitaria. | Aprobado | Pendiente manual | ../test/widget/flows_test.dart |
 | CP-28 | Eliminación | FC-03 | Negativo | Cancelar eliminación con fake | tarea Café; Cancelar | No se invoca eliminación | No se invoca eliminación con fake o prueba unitaria. | Aprobado | Pendiente manual | ../test/widget/flows_test.dart |
 | CP-29 | Edición | FC-03 | Positivo | Editar con fake | Café → Comprar café | Se guarda el título y conserva el id | Se guarda el título y conserva el id con fake o prueba unitaria. | Aprobado | Pendiente manual | ../test/widget/flows_test.dart |
-
 | CP-30 | Integración | FC-01/FC-02/FC-05 | Positivo | Flujo completo con fakes | prueba1@test.com; Comprar café | Acceso, creación y cierre correctos | Flujo completo aprobado con fakes en prueba de widget. | Aprobado | Pendiente manual | ../test/widget/full_flow_test.dart |
 
 ## Análisis de resultados

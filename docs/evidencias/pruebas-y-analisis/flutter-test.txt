@@ -1,28 +1,27 @@
 00:00 +0: loading C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/notification_session_test.dart
 00:00 +0: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/sign_out_test.dart: limpia las notificaciones antes de cerrar Firebase Auth
-00:00 +1: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/sign_out_test.dart: limpia las notificaciones antes de cerrar Firebase Auth
-00:00 +2: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/notification_session_test.dart: la caducidad de sesión también inicia la limpieza FCM
-00:00 +3: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/notification_session_test.dart: la caducidad de sesión también inicia la limpieza FCM
+00:00 +1: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/notification_session_test.dart: la caducidad de sesión también inicia la limpieza FCM
+00:00 +2: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/notification_session_test.dart: la primera emisión sin sesión no limpia un token inexistente
 00:00 +3: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/sign_out_test.dart: permite cerrar sesión cuando falla la limpieza sin conexión
 No se pudo desvincular el dispositivo antes de cerrar sesión.
-00:00 +4: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/notification_session_test.dart: la caducidad de sesión también inicia la limpieza FCM
-00:00 +5: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/notification_session_test.dart: la primera emisión sin sesión no limpia un token inexistente
-00:00 +6: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/notification_session_test.dart: el siguiente inicio espera la limpieza anterior
+00:00 +4: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/notification_session_test.dart: el siguiente inicio espera la limpieza anterior
 No se pudo obtener el token de notificaciones.
-00:00 +7: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/notification_session_test.dart: cambiar directamente de usuario inicia la limpieza anterior
+00:00 +5: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/task_model_test.dart: conserva los campos al convertir a mapa y volver
+00:00 +6: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/notification_session_test.dart: cambiar directamente de usuario inicia la limpieza anterior
 No se pudo obtener el token de notificaciones.
+00:00 +7: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/task_model_test.dart: proporciona valores seguros para campos ausentes
 00:00 +8: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/token_cleanup_test.dart: elimina solo el token del dispositivo actual
 00:00 +9: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/token_cleanup_test.dart: no elimina el token registrado por otro dispositivo
 00:00 +10: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/token_cleanup_test.dart: no crea un documento de usuario inexistente
-00:01 +11: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/validators_test.dart: valida límites y espacios del título
-00:01 +12: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/validators_test.dart: limita la descripción a 500 caracteres
+00:00 +11: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/validators_test.dart: valida límites y espacios del título
+00:00 +12: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/unit/validators_test.dart: limita la descripción a 500 caracteres
 00:01 +13: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/flows_test.dart: CP-03: muestra error de credenciales rechazadas
 00:02 +14: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/flows_test.dart: CP-03: muestra error de credenciales rechazadas
-00:02 +15: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/full_flow_test.dart: iniciar sesión, crear tarea y cerrar sesión con repositorios fake
+00:02 +15: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/flows_test.dart: CP-03: muestra error de credenciales rechazadas
 00:02 +16: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/full_flow_test.dart: iniciar sesión, crear tarea y cerrar sesión con repositorios fake
 00:02 +17: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/full_flow_test.dart: iniciar sesión, crear tarea y cerrar sesión con repositorios fake
 00:02 +18: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/full_flow_test.dart: iniciar sesión, crear tarea y cerrar sesión con repositorios fake
-00:03 +19: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/full_flow_test.dart: iniciar sesión, crear tarea y cerrar sesión con repositorios fake
+00:02 +19: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/full_flow_test.dart: iniciar sesión, crear tarea y cerrar sesión con repositorios fake
 00:03 +20: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/full_flow_test.dart: iniciar sesión, crear tarea y cerrar sesión con repositorios fake
 00:03 +21: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/full_flow_test.dart: iniciar sesión, crear tarea y cerrar sesión con repositorios fake
 00:03 +22: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/unchanged_test.dart: al guardar sin cambios vuelve y no escribe
@@ -30,4 +29,4 @@ No se pudo obtener el token de notificaciones.
 00:04 +24: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/flows_test.dart: CP-10: eliminar requiere confirmación
 00:04 +25: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/flows_test.dart: CP-12: error de lectura muestra mensaje
 00:04 +26: C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/flows_test.dart: INC-001: caducidad de sesión cierra detalles privados
-00:05 +27: All tests passed!
+00:04 +27: All tests passed!

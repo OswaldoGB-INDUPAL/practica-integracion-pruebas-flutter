@@ -28,3 +28,15 @@ flutter drive --driver=test_driver/integration_test.dart --target=integration_te
 ```
 
 Al finalizar detén EdgeDriver y el adaptador. Este ensayo utiliza fakes y no sustituye Android, Firebase real ni las capturas. Los tokens efímeros de depuración deben ocultarse antes de compartir la salida.
+
+## Repetir el flujo con Auth y Firestore emulados
+
+Con Node.js y Java 21, ejecuta `npm ci` en `rules_tests/`. Desde esa carpeta inicia `npx firebase --config ../firebase-emulators.json emulators:start --only auth,firestore --project demo-semana16`. Los emuladores escuchan únicamente en el equipo local, en los puertos 9099 y 8094; la configuración del test es ficticia y no usa credenciales reales.
+
+En una copia temporal con plataforma web, inicia EdgeDriver y el adaptador como en la sección anterior y ejecuta:
+
+```sh
+flutter drive --driver=test_driver/integration_test.dart --target=integration_test/firebase_emulator_flow_test.dart -d web-server --browser-name=edge --driver-port=4445 --headless
+```
+
+El test registra una cuenta `@test.com`, crea, edita y elimina una tarea y cierra sesión. Detén emuladores y controladores al finalizar. Esta prueba no envía notificaciones ni sustituye Firebase alojado o Android. Para `flutter test integration_test`, inicia primero estos emuladores, ya que la carpeta incluye el escenario que los requiere.

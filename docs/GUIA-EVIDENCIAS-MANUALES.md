@@ -39,4 +39,4 @@ En una copia temporal con plataforma web, inicia EdgeDriver y el adaptador como 
 flutter drive --driver=test_driver/integration_test.dart --target=integration_test/firebase_emulator_flow_test.dart -d web-server --browser-name=edge --driver-port=4445 --headless
 ```
 
-El test registra una cuenta `@test.com`, crea, edita y elimina una tarea y cierra sesión. Detén emuladores y controladores al finalizar. Esta prueba no envía notificaciones ni sustituye Firebase alojado o Android. Para `flutter test integration_test`, inicia primero estos emuladores, ya que la carpeta incluye el escenario que los requiere.
+El test registra una cuenta `@test.com`, crea, edita y elimina una tarea, prueba contraseña incorrecta, reingresa y comprueba la tarea tras reconstruir la interfaz. Detén emuladores y controladores al finalizar. Esta prueba no envía notificaciones ni sustituye Firebase alojado o Android. Para `flutter test integration_test`, inicia primero estos emuladores, ya que la carpeta incluye el escenario que los requiere.

@@ -25,3 +25,5 @@ Las salidas `flutter-test-caducidad-inicial.txt` y `flutter-test-caducidad-regre
 `flutter-integration-web-inicial.txt` registra el fallo de compilación inicial y `flutter-integration-web-final.txt` la ejecución exitosa en Edge con fakes; los tokens locales efímeros se ocultaron. `flutter-build-apk-intento.txt` registra que falta Android SDK.
 
 `flutter-integration-firebase-emuladores.txt` registra el flujo en Edge con los repositorios Firebase y emuladores locales; los tokens efímeros del depurador están ocultos. No comprueba FCM ni Firebase alojado.
+
+`flutter-integration-firebase-reingreso.txt` registra el flujo ampliado con credenciales inválidas, reingreso válido y reconstrucción de interfaz. No demuestra reinicio de proceso ni Firebase alojado.

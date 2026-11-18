@@ -13,7 +13,7 @@ Future<void> main() async {
   final navigatorKey = GlobalKey<NavigatorState>();
   final messengerKey = GlobalKey<ScaffoldMessengerState>();
   final notifications = NotificationService(navigatorKey, messengerKey, FirebaseTaskRepository.new);
-  await notifications.start();
+  try { await notifications.start(); } catch (_) { debugPrint('No se pudieron iniciar las notificaciones.'); }
   runApp(MyApp(auth: FirebaseAuthRepository(), tasks: FirebaseTaskRepository.new, notifications: notifications, navigatorKey: navigatorKey, messengerKey: messengerKey));
 }
 

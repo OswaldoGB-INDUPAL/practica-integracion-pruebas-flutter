@@ -1,0 +1,8 @@
+00:00 +0: loading C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/flows_test.dart
+00:00 +0: CP-03: muestra error de credenciales rechazadas
+00:00 +1: CP-06: regresar del formulario vuelve a la lista
+00:01 +2: CP-09: editar guarda valores cambiados
+00:01 +3: CP-10: eliminar requiere confirmación
+00:01 +4: CP-12: error de lectura muestra mensaje
+00:01 +5: INC-001: caducidad de sesión cierra detalles privados
+00:01 +6: All tests passed!

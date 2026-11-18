@@ -1,0 +1,3 @@
+00:00 +0: loading C:/Users/oswan/Documents/Codex/2026-11-17/c-users-oswan-downloads-handoff-codex/outputs/practica-integracion-pruebas-flutter/test/widget/full_flow_test.dart
+00:00 +0: iniciar sesión, crear tarea y cerrar sesión con repositorios fake
+00:01 +1: All tests passed!

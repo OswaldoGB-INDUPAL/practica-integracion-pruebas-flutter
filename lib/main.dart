@@ -42,18 +42,20 @@ class TaskRouteArguments {
 Route<dynamic>? appRoute(RouteSettings settings) {
   final args = settings.arguments;
   if (args is! TaskRouteArguments) return null;
-  if (settings.name == '/formulario')
+  if (settings.name == '/formulario') {
     return MaterialPageRoute(
       settings: settings,
       builder: (_) =>
           TaskFormPage(repository: args.repository, task: args.task),
     );
-  if (settings.name == '/detalle' && args.task != null)
+  }
+  if (settings.name == '/detalle' && args.task != null) {
     return MaterialPageRoute(
       settings: settings,
       builder: (_) =>
           TaskDetailPage(repository: args.repository, task: args.task!),
     );
+  }
   return null;
 }
 
@@ -82,10 +84,11 @@ class _MyAppState extends State<MyApp> {
   late final Stream<String?> session = widget.auth.authState().map((uid) {
     if (seenSession && uid != previousUid) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (mounted)
+        if (mounted) {
           (widget.navigatorKey ?? fallbackNavigatorKey).currentState?.popUntil(
             (route) => route.isFirst,
           );
+        }
       });
     }
     seenSession = true;
@@ -109,14 +112,16 @@ class _MyAppState extends State<MyApp> {
     home: StreamBuilder<String?>(
       stream: session,
       builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting)
+        if (snapshot.connectionState == ConnectionState.waiting) {
           return const Scaffold(
             body: Center(child: CircularProgressIndicator()),
           );
-        if (snapshot.hasError)
+        }
+        if (snapshot.hasError) {
           return const Scaffold(
             body: Center(child: Text('No se pudo comprobar la sesión.')),
           );
+        }
         final uid = snapshot.data;
         return uid == null
             ? LoginPage(auth: widget.auth)
@@ -244,8 +249,9 @@ class _TaskListPageState extends State<TaskListPage> {
           onPressed: () async {
             try {
               await widget.auth.signOut();
-              if (context.mounted)
+              if (context.mounted) {
                 Navigator.of(context).popUntil((route) => route.isFirst);
+              }
             } catch (e) {
               if (context.mounted) showFailure(context, e);
             }
@@ -265,10 +271,12 @@ class _TaskListPageState extends State<TaskListPage> {
     body: StreamBuilder<List<Task>>(
       stream: tasks,
       builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting)
+        if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
-        if (snapshot.hasError)
+        }
+        if (snapshot.hasError) {
           return const Center(child: Text('No se pudieron cargar las tareas.'));
+        }
         final items = snapshot.data ?? [];
         if (items.isEmpty) return const Center(child: Text('No hay tareas.'));
         return ListView.builder(

@@ -72,8 +72,9 @@ class NotificationService {
   }
 
   Future<void> open(RemoteMessage message) async {
-    if (message.data['route'] != '/detalle' || message.data['id'] is! String)
+    if (message.data['route'] != '/detalle' || message.data['id'] is! String) {
       return;
+    }
     final user = uid;
     if (user == null || navigatorKey.currentState == null) {
       pending = message;

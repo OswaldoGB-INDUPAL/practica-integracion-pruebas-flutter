@@ -10,3 +10,5 @@ lib/firebase_options.dart
 .env
 *.keystore
 key.properties
+.idea/
+*.iml

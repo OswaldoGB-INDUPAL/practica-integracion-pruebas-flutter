@@ -7,7 +7,11 @@ import 'package:material_ui/material_ui.dart';
 import 'package:practica_integracion_pruebas_flutter/data/repositories.dart';
 import 'package:practica_integracion_pruebas_flutter/main.dart';
 
-Future<void> waitFor(WidgetTester tester, Finder finder) async {
+Future<void> waitFor(
+  WidgetTester tester,
+  Finder finder, {
+  String stage = '',
+}) async {
   for (var i = 0; i < 200; i++) {
     await tester.pump(const Duration(milliseconds: 100));
     if (finder.evaluate().isNotEmpty) {
@@ -15,7 +19,15 @@ Future<void> waitFor(WidgetTester tester, Finder finder) async {
       return;
     }
   }
-  throw TestFailure('No apareció el elemento esperado: $finder');
+  final visible = tester
+      .widgetList<Text>(find.byType(Text))
+      .map((text) => text.data)
+      .whereType<String>()
+      .take(20)
+      .toList();
+  throw TestFailure(
+    'No apareció el elemento esperado en $stage: $finder; sesión activa: ${FirebaseAuth.instance.currentUser != null}; textos visibles: $visible',
+  );
 }
 
 void main() {
@@ -102,6 +114,97 @@ void main() {
           .collection('tasks')
           .get();
       expect(stored.docs, isEmpty);
+      await tester.tap(find.byTooltip('Nueva tarea'));
+      await waitFor(tester, find.text('Guardar'));
+      await tester.enterText(
+        find.widgetWithText(TextFormField, 'Título'),
+        'Tarea persistente',
+      );
+      await tester.tap(find.text('Guardar'));
+      await waitFor(
+        tester,
+        find.widgetWithText(ListTile, 'Tarea persistente'),
+        stage: 'creación',
+      );
+      await tester.tap(find.byTooltip('Cerrar sesión'));
+      await waitFor(tester, find.text('Iniciar sesión'));
+      expect(FirebaseAuth.instance.currentUser, isNull);
+      await tester.enterText(
+        find.widgetWithText(TextFormField, 'Correo'),
+        email,
+      );
+      await tester.enterText(
+        find.widgetWithText(TextFormField, 'Contraseña'),
+        'incorrecta',
+      );
+      await tester.tap(find.text('Iniciar sesión'));
+      await waitFor(
+        tester,
+        find.text(
+          'No se pudo iniciar la sesión o registrar la cuenta. Revisa los datos.',
+        ),
+      );
+      expect(FirebaseAuth.instance.currentUser, isNull);
+      await tester.pumpWidget(const SizedBox());
+      await tester.pumpWidget(
+        MyApp(
+          auth: FirebaseAuthRepository(),
+          tasks: FirebaseTaskRepository.new,
+        ),
+      );
+      await waitFor(tester, find.text('Iniciar sesión'));
+      await tester.enterText(
+        find.widgetWithText(TextFormField, 'Correo'),
+        email,
+      );
+      await tester.enterText(
+        find.widgetWithText(TextFormField, 'Contraseña'),
+        'secreto123',
+      );
+      await tester.pump();
+      expect(
+        tester
+            .widget<TextFormField>(find.widgetWithText(TextFormField, 'Correo'))
+            .controller!
+            .text,
+        email,
+      );
+      expect(
+        tester
+            .widget<TextFormField>(
+              find.widgetWithText(TextFormField, 'Contraseña'),
+            )
+            .controller!
+            .text,
+        'secreto123',
+      );
+      expect(
+        tester
+            .widget<FilledButton>(
+              find.widgetWithText(FilledButton, 'Iniciar sesión'),
+            )
+            .onPressed,
+        isNotNull,
+      );
+      await tester.tap(find.text('Iniciar sesión'));
+      await waitFor(
+        tester,
+        find.widgetWithText(ListTile, 'Tarea persistente'),
+        stage: 'reingreso',
+      );
+      expect(FirebaseAuth.instance.currentUser!.uid, uid);
+      await tester.pumpWidget(const SizedBox());
+      await tester.pumpWidget(
+        MyApp(
+          auth: FirebaseAuthRepository(),
+          tasks: FirebaseTaskRepository.new,
+        ),
+      );
+      await waitFor(
+        tester,
+        find.widgetWithText(ListTile, 'Tarea persistente'),
+        stage: 'reconstrucción',
+      );
       await tester.tap(find.byTooltip('Cerrar sesión'));
       await waitFor(tester, find.text('Iniciar sesión'));
       expect(FirebaseAuth.instance.currentUser, isNull);
